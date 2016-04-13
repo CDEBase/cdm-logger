@@ -7,8 +7,9 @@ Rokot - [Rocketmakers](http://www.rocketmakers.com/) TypeScript NodeJs Platform
 A typescript library for Logging.
 
 This library extends the `bunyan` npm with factories to create Logger instances:
+
 1. ConsoleLogger - create a Console logger
-1. LogstashAmqpLogger - create a Logstash feed via Amqp
+2. LogstashAmqpLogger - create a Logstash feed via Amqp
 
 
 >The Rokot platform components heavily rely on usage of the [typings](https://github.com/typings/typings) utility for typescript definitions management.
