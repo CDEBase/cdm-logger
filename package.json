@@ -1,6 +1,6 @@
 {
   "name": "rokot-log",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Rocketmakers Rokot Platform - Logger",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
@@ -17,7 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "bunyan": "^1.5.1",
-    "bunyan-logstash-amqp": "^1.0.3",
+    "bunyan-logstash-amqp": "^1.0.5",
     "bunyan-prettystream": "^0.1.3"
   },
   "devDependencies": {
