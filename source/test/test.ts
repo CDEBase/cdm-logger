@@ -1,5 +1,5 @@
 import {expect,sinon,supertest} from "rokot-test";
-import {ConsoleLogger,Logger,IConsoleLoggerSettings,getConsoleStream, getLoggerOptions, createLogger} from "../index";
+import {ConsoleLogger,Logger,IConsoleLoggerSettings,getConsoleStream, getLoggerOptions, createLogger, makeLogger, LogstashAmqpLogger} from "../index";
 
 function testLogger(logger: Logger, msg: string) {
   logger.trace(msg);
@@ -9,6 +9,19 @@ function testLogger(logger: Logger, msg: string) {
   logger.error(msg);
   logger.fatal(msg);
 }
+
+describe("Logstash Amqp Logger", () => {
+  it("should be able to create a TRACE instance", () => {
+    const logger = LogstashAmqpLogger.create("api", { host: "127.0.0.1", port: 5672, exchange: "logs", level: "trace"}, {
+      level: "warn",
+      mode: "short"
+    });
+
+    expect(logger).to.be.not.undefined;
+    expect(logger).to.be.not.null;
+    testLogger(logger, "trace + warn")
+  });
+})
 
 describe("getLoggerOptions", () => {
   it("should be able to getLoggerOptions with no streams", () => {
@@ -91,6 +104,10 @@ describe("getLoggerOptions", () => {
 
 })
 
+function createMultiLogger(name: string, settings1: IConsoleLoggerSettings, settings2: IConsoleLoggerSettings) {
+  return makeLogger(name, getConsoleStream(settings1), getConsoleStream(settings2));
+}
+
 describe("Console Logger", () => {
   it("should be able to create a TRACE instance", () => {
     const settings: IConsoleLoggerSettings = {
@@ -109,5 +126,19 @@ describe("Console Logger", () => {
     expect(logger).to.be.not.undefined;
     expect(logger).to.be.not.null;
     testLogger(logger, "INFO")
+  });
+
+  it("should be able to create an instance with 2 streams at different levels", () => {
+    const logger: Logger = createMultiLogger("TestLog", {mode: "long", level: "trace"}, {mode: "short", level: "warn"});
+    expect(logger).to.be.not.undefined;
+    expect(logger).to.be.not.null;
+    testLogger(logger, "long/trace + short/warn")
+  });
+
+  it("should be able to create an instance with 2 streams at different levels", () => {
+    const logger: Logger = createMultiLogger("TestLog", {mode: "long", level: "warn"}, {mode: "short", level: "trace"});
+    expect(logger).to.be.not.undefined;
+    expect(logger).to.be.not.null;
+    testLogger(logger, "long/warn + short/trace")
   });
 })

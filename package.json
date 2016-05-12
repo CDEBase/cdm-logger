@@ -6,6 +6,7 @@
   "typings": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc -p source/tsconfig.json -d",
+    "debugtest": "npm run build && mocha --debug-brk",
     "test": "npm run build && mocha"
   },
   "keywords": [
