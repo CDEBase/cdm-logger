@@ -16,8 +16,8 @@ export function getLogstashAmqpStream(settings: ILogstashAmqpLoggerSettings): bu
   if (!settings.host || !settings.port) {
     throw new Error("Cannot create a LogstashAmqpLogger without logstash settings")
   }
-  const level = getSettingsLevel(settings);
 
+  const level = getSettingsLevel(settings);
   return {
     type: "raw",
     level,
