@@ -1,6 +1,6 @@
 {
   "name": "rokot-log",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Rocketmakers Rokot Platform - Logger",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
