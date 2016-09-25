@@ -19,14 +19,6 @@ Install via `npm`
 npm i rokot-log --save
 ```
 
-### Typings
-
-You will need to install these typescript typings dependencies:
-
-```
-npm i @types/bunyan @types/node -S
-```
-
 ## Example: Logstash Amqp
 
 ```typescript

@@ -1,6 +1,6 @@
 {
   "name": "rokot-log",
-  "version": "0.2.2",
+  "version": "0.2.5",
   "description": "Rocketmakers Rokot Platform - Logger",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
@@ -23,7 +23,7 @@
     "bunyan-prettystream": "^0.1.3"
   },
   "devDependencies": {
-    "rokot-test": "^0.2.0",
+    "rokot-test": "^0.2.5",
     "typescript": "^2.0.3"
   },
   "homepage": "https://github.com/Rocketmakers/rokot-log",
