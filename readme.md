@@ -11,13 +11,6 @@ This library extends the `bunyan` npm with factories to create Logger instances:
 1. ConsoleLogger - create a Console logger
 2. LogstashAmqpLogger - create a Logstash feed via Amqp
 
-
->The Rokot platform components heavily rely on usage of the [typings](https://github.com/typings/typings) utility for typescript definitions management.
-If you don't have `typings` installed:
-```
-npm i typings -g
-```
-
 ## Getting Started
 
 ### Installation
@@ -28,11 +21,10 @@ npm i rokot-log --save
 
 ### Typings
 
-You will need to install these ambient dependencies:
->NOTE: you may already have some of these ambient dependencies installed!
+You will need to install these typescript typings dependencies:
 
 ```
-typings install bunyan node -SA
+npm i @types/bunyan @types/node -S
 ```
 
 ## Example: Logstash Amqp
