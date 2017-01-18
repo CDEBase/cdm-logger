@@ -16,13 +16,13 @@ This library extends the `bunyan` npm with factories to create Logger instances:
 ### Installation
 Install via `npm`
 ```
-npm i rokot-log --save
+npm i cdm-logger --save
 ```
 
 ## Example: Logstash Amqp
 
 ```typescript
-import {LogstashAmqpLogger,Logger,ILogstashAmqpLoggerSettings} from "rokot-log";
+import {LogstashAmqpLogger,Logger,ILogstashAmqpLoggerSettings} from "cdm-logger";
 
 const settings: ILogstashAmqpLoggerSettings = {
   level: "info", // Optional: default 'info' ('trace'|'info'|'debug'|'warn'|'error'|'fatal')
@@ -46,7 +46,7 @@ const logger: Logger = LogstashAmqpLogger.create("<app name>", settings, console
 ## Example: Console
 
 ```typescript
-import {ConsoleLogger,Logger,IConsoleLoggerSettings} from "rokot-log";
+import {ConsoleLogger,Logger,IConsoleLoggerSettings} from "cdm-logger";
 
 const settings: IConsoleLoggerSettings = {
   level: "info", // Optional: default 'info' ('trace'|'info'|'debug'|'warn'|'error'|'fatal')
