@@ -1,6 +1,6 @@
-# rokot-log
+# cdm-logger
 
-Rokot - [Rocketmakers](http://www.rocketmakers.com/) TypeScript NodeJs Platform
+TypeScript NodeJs Platform
 
 ## Introduction
 
@@ -61,7 +61,7 @@ const defaultLogger: Logger = ConsoleLogger.create("<app name>");
 // Register 'logger' with IoC
 ```
 
-
+##
 
 ## Consumed Libraries
 

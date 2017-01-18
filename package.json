@@ -1,37 +1,41 @@
 {
-  "name": "rokot-log",
-  "version": "0.2.5",
-  "description": "Rocketmakers Rokot Platform - Logger",
+  "name": "cdm-logger",
+  "version": "0.3.0",
+  "description": "Universal - Logger",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
   "scripts": {
     "build": "tsc -p source/tsconfig.json -d",
     "debugtest": "npm run build && mocha --debug-brk",
-    "test": "npm run build && mocha"
+    "test": "npm run build && mocha --compilers js:babel-core/register"
   },
   "keywords": [
     "typescript",
     "bunyan",
     "logger"
   ],
-  "author": "developers@rocketmakers.com",
+  "author": "Veera Marni <marni.srikanth@gmail.com> (http://vm.com)",
   "license": "MIT",
   "dependencies": {
-    "@types/bunyan": "0.0.30",
-    "bunyan": "^1.5.1",
+    "@types/bunyan": "^0.0.35",
+    "bunyan": "^1.8.4",
     "bunyan-logstash-amqp": "1.0.5",
     "bunyan-prettystream": "^0.1.3"
   },
   "devDependencies": {
+    "babel-core": "^6.21.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "mocha": "^3.2.0",
     "rokot-test": "^0.2.5",
-    "typescript": "^2.0.3"
+    "typescript": "^2.1.4"
   },
-  "homepage": "https://github.com/Rocketmakers/rokot-log",
+  "homepage": "https://github.com/cdmbase/cdm-logger",
   "repository": {
     "type": "git",
-    "url": "git://git@github.com:Rocketmakers/rokot-log.git"
+    "url": "git://git@github.com:cdmbase/cdm-logger.git"
   },
   "bugs": {
-    "url": "https://github.com/Rocketmakers/rokot-log/issues"
+    "url": "https://github.com/cdmbase/cdm-logger/issues"
   }
 }

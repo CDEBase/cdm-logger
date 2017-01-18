@@ -1,4 +1,4 @@
-import * as bunyan from "bunyan";
+import * as Logger from "bunyan";
 import {ILoggerSettings,makeLogger,getSettingsLevel} from "./core";
 
 var PrettyStream = require('bunyan-prettystream');
@@ -8,7 +8,7 @@ export interface IConsoleLoggerSettings extends ILoggerSettings {
   mode?: "short" | "long" | "dev" | "raw";
 }
 
-export function getConsoleStream(settings?: IConsoleLoggerSettings): bunyan.Stream {
+export function getConsoleStream(settings?: IConsoleLoggerSettings): Logger.Stream {
   if (!settings) {
     settings = {};
   }
@@ -19,7 +19,7 @@ export function getConsoleStream(settings?: IConsoleLoggerSettings): bunyan.Stre
       stream: process.stdout
     }
   }
-  
+
   const prettyStdOut = new PrettyStream({ mode: settings.mode || "short" });
   prettyStdOut.pipe(process.stdout);
   return {

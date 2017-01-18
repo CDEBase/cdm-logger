@@ -1,5 +1,5 @@
 import {expect,sinon,supertest} from "rokot-test";
-import {ConsoleLogger,Logger,IConsoleLoggerSettings,getConsoleStream, getLoggerOptions, createLogger, makeLogger, LogstashAmqpLogger} from "../index";
+import {ConsoleLogger,Logger, IConsoleLoggerSettings,getConsoleStream, getLoggerOptions, createLogger, makeLogger, LogstashAmqpLogger} from "../index";
 
 function testLogger(logger: Logger, msg: string) {
   logger.trace(msg);

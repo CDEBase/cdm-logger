@@ -1,7 +1,7 @@
-import * as bunyan from "bunyan";
+import * as Logger from "bunyan";
 
 export interface ILoggerFactory {
-  create(): bunyan.Logger;
+  create(): Logger;
 }
 
 export type LoggerLevel = "trace"|"debug"|"info"|"warn"|"error"|"fatal";
@@ -15,15 +15,15 @@ export function getSettingsLevel(settings: ILoggerSettings) {
   return settings.level || "info";
 }
 
-export function makeLogger(name: string, ...streams: bunyan.Stream[]): bunyan.Logger {
-  return bunyan.createLogger(getLoggerOptions(name, ...streams));
+export function makeLogger(name: string, ...streams: Logger.Stream[]): Logger {
+  return Logger.createLogger(getLoggerOptions(name, ...streams));
 }
 
-export function getLoggerOptions(name: string, ...streams: bunyan.Stream[]): bunyan.LoggerOptions {
+export function getLoggerOptions(name: string, ...streams: Logger.Stream[]): Logger.LoggerOptions {
   if (!name) {
     throw Error("Cannot create LoggerOptions without a log name")
   }
-  const options: bunyan.LoggerOptions = {
+  const options: Logger.LoggerOptions = {
     name: name,
     src: true,
     serializers: {
