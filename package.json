@@ -1,13 +1,13 @@
 {
   "name": "cdm-logger",
-  "version": "0.3.2",
+  "version": "2.0.0",
   "description": "Universal - Logger",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
   "scripts": {
-    "build": "tsc -p source/tsconfig.json -d",
+    "build": "tsc -p src/tsconfig.json -d",
     "debugtest": "npm run build && mocha --debug-brk",
-    "test": "npm run build && mocha --compilers js:babel-core/register"
+    "test": "npm run build && mocha "
   },
   "keywords": [
     "typescript",
@@ -17,19 +17,16 @@
   "author": "Veera Marni <marni.srikanth@gmail.com> (http://vm.com)",
   "license": "MIT",
   "dependencies": {
-    "@types/bunyan": "^0.0.35",
-    "bunyan": "^1.8.4",
-    "bunyan-logstash-amqp": "1.0.5",
+    "@types/bunyan": "^1.8.0",
+    "bunyan": "^1.8.10",
+    "bunyan-logstash-amqp": "1.0.7",
     "bunyan-prettystream": "^0.1.3"
   },
   "devDependencies": {
-    "@types/es6-promise": "0.0.32",
-    "babel-core": "^6.21.0",
-    "babel-preset-es2015": "^6.18.0",
-    "babel-preset-stage-0": "^6.16.0",
-    "mocha": "^3.2.0",
-    "rokot-test": "^0.2.5",
-    "typescript": "^2.1.4"
+    "@types/chai": "^4.0.0",
+    "chai": "^4.0.2",
+    "mocha": "^3.4.2",
+    "typescript": "^2.3.4"
   },
   "homepage": "https://github.com/cdmbase/cdm-logger",
   "repository": {

@@ -1,7 +1,7 @@
 import * as Logger from "bunyan";
 import {ILoggerSettings,makeLogger,getSettingsLevel} from "./core";
 
-var PrettyStream = require('bunyan-prettystream');
+const PrettyStream = require('bunyan-prettystream');
 
 export interface IConsoleLoggerSettings extends ILoggerSettings {
   /** defaults to short */
