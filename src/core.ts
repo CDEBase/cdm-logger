@@ -4,7 +4,7 @@ export interface ILoggerFactory {
   create(): Logger;
 }
 
-export type LoggerLevel = "trace"|"debug"|"info"|"warn"|"error"|"fatal";
+export type LoggerLevel = "trace" | "debug" | "info" | "warn" | "error" | "fatal";
 
 export interface ILoggerSettings {
   /** defaults to INFO */
@@ -15,8 +15,9 @@ export function getSettingsLevel(settings: ILoggerSettings) {
   return settings.level || "info";
 }
 
-export function makeLogger(name: string, ...streams: Logger.Stream[]): Logger {
-  return Logger.createLogger(getLoggerOptions(name, ...streams));
+export function makeLogger(name: string | Object, ...streams: Logger.Stream[]): Logger {
+  const logName = typeof name === "object" ? name.constructor.toString().match(/class ([\w|_]+)/)[1] : name
+  return Logger.createLogger(getLoggerOptions(logName, ...streams));
 }
 
 export function getLoggerOptions(name: string, ...streams: Logger.Stream[]): Logger.LoggerOptions {

@@ -103,7 +103,7 @@ describe("getLoggerOptions", () => {
 
 })
 
-function createMultiLogger(name: string, settings1: IConsoleLoggerSettings, settings2: IConsoleLoggerSettings) {
+function createMultiLogger(name: string | Object, settings1: IConsoleLoggerSettings, settings2: IConsoleLoggerSettings) {
   return makeLogger(name, getConsoleStream(settings1), getConsoleStream(settings2));
 }
 
@@ -136,6 +136,46 @@ describe("Console Logger", () => {
 
   it("should be able to create an instance with 2 streams at different levels", () => {
     const logger: Logger = createMultiLogger("TestLog", {mode: "long", level: "warn"}, {mode: "short", level: "trace"});
+    expect(logger).to.be.not.undefined;
+    expect(logger).to.be.not.null;
+    testLogger(logger, "long/warn + short/trace")
+  });
+})
+
+describe("Console Logger by Constructor", () => {
+  class TestClass {
+    
+  }
+  const instance = new TestClass();
+
+  it("should be able to create a TRACE instance", () => {
+    const settings: IConsoleLoggerSettings = {
+      mode:"long",
+      level: "trace"
+    }
+
+    const logger: Logger = ConsoleLogger.create(instance, settings);
+    expect(logger).to.be.not.undefined;
+    expect(logger).to.be.not.null;
+    testLogger(logger, settings.level)
+  });
+
+  it("should be able to create an instance without settings", () => {
+    const logger: Logger = ConsoleLogger.create(instance);
+    expect(logger).to.be.not.undefined;
+    expect(logger).to.be.not.null;
+    testLogger(logger, "INFO")
+  });
+
+  it("should be able to create an instance with 2 streams at different levels", () => {
+    const logger: Logger = createMultiLogger(instance, {mode: "long", level: "trace"}, {mode: "short", level: "warn"});
+    expect(logger).to.be.not.undefined;
+    expect(logger).to.be.not.null;
+    testLogger(logger, "long/trace + short/warn")
+  });
+
+  it("should be able to create an instance with 2 streams at different levels", () => {
+    const logger: Logger = createMultiLogger(instance, {mode: "long", level: "warn"}, {mode: "short", level: "trace"});
     expect(logger).to.be.not.undefined;
     expect(logger).to.be.not.null;
     testLogger(logger, "long/warn + short/trace")

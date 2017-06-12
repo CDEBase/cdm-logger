@@ -58,6 +58,9 @@ const logger: Logger = ConsoleLogger.create("<app name>", settings);
 // or create a logger with default values (in 'short' mode and at 'info' level)
 const defaultLogger: Logger = ConsoleLogger.create("<app name>");
 
+// or create a logger with instance of the class
+const defaultLogger: Logger = ConsoleLogger.create(this);
+
 // Register 'logger' with IoC
 ```
 

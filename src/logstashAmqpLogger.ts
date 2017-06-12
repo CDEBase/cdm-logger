@@ -31,7 +31,7 @@ export function getLogstashAmqpStream(settings: ILogstashAmqpLoggerSettings): Lo
 }
 
 export class LogstashAmqpLogger {
-  static create(name: string, settings: ILogstashAmqpLoggerSettings, consoleLoggerSettings?: IConsoleLoggerSettings) {
+  static create(name: string | Object, settings: ILogstashAmqpLoggerSettings, consoleLoggerSettings?: IConsoleLoggerSettings) {
     const streams = [getLogstashAmqpStream(settings)]
     //if (process.env.NODE_ENV !== "production") {
     if (consoleLoggerSettings) {

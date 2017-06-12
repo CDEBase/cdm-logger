@@ -29,7 +29,7 @@ export function getConsoleStream(settings?: IConsoleLoggerSettings): Logger.Stre
 }
 
 export class ConsoleLogger {
-  static create(name: string, settings?: IConsoleLoggerSettings) {
+  static create(name: string | Object, settings?: IConsoleLoggerSettings) {
     return makeLogger(name, getConsoleStream(settings));
   }
 }
