@@ -62,6 +62,29 @@ const defaultLogger: Logger = ConsoleLogger.create("<app name>");
 const defaultLogger: Logger = ConsoleLogger.create(this);
 
 // Register 'logger' with IoC
+describe("Console Logger using inversify", () => {
+
+  @injectable()
+  class TestClass {
+    constructor(@inject("logger") private logger: Logger) {
+
+    }
+    test() {
+      this.logger.info("test")
+    }
+  }
+  const container = new Container();
+  const consoleLogger = ConsoleLogger.create("ioc")
+  container.bind<Logger>("logger").toConstantValue(consoleLogger)
+  container.bind<TestClass>("TestClass").to(TestClass)
+
+  it("should be able to create a TRACE instance", () => {
+
+    const testClass = container.get<TestClass>("TestClass")
+    testClass.test();
+  });
+
+})
 ```
 
 ##

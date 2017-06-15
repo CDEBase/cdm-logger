@@ -1,4 +1,7 @@
+import 'reflect-metadata';
+import { injectable, inject, Container } from 'inversify'
 import {ConsoleLogger,Logger, IConsoleLoggerSettings,getConsoleStream, getLoggerOptions, createLogger, makeLogger, LogstashAmqpLogger} from "../index";
+
 function testLogger(logger: Logger, msg: string) {
   logger.trace(msg);
   logger.debug(msg);
@@ -142,7 +145,7 @@ describe("Console Logger", () => {
   });
 })
 
-describe("Console Logger by Constructor", () => {
+describe("Console Logger using Constructor", () => {
   class TestClass {
     
   }
@@ -180,4 +183,52 @@ describe("Console Logger by Constructor", () => {
     expect(logger).to.be.not.null;
     testLogger(logger, "long/warn + short/trace")
   });
+})
+
+describe("Console Logger using inversify", () => {
+
+  @injectable()
+  class TestClass {
+    constructor(@inject("logger") private logger: Logger) {
+
+    }
+    test() {
+      this.logger.info("test")
+    }
+  }
+  const container = new Container();
+  const consoleLogger = ConsoleLogger.create("ioc")
+  container.bind<Logger>("logger").toConstantValue(consoleLogger)
+  container.bind<TestClass>("TestClass").to(TestClass)
+
+  it("should be able to create a TRACE instance", () => {
+
+    const testClass = container.get<TestClass>("TestClass")
+    testClass.test();
+  });
+
+})
+
+describe("Console Logger for child classes", () => {
+
+  @injectable()
+  class TestClass {
+    constructor(@inject("logger") private logger: Logger) {
+      this.logger = logger.child({className: 'TestClass'})
+    }
+    test() {
+      this.logger.info("This is to test child logger.")
+    }
+  }
+  const container = new Container();
+  const consoleLogger = ConsoleLogger.create("ioc")
+  container.bind<Logger>("logger").toConstantValue(consoleLogger)
+  container.bind<TestClass>("TestClass").to(TestClass)
+
+  it("should be able to create a TRACE instance", () => {
+
+    const testClass = container.get<TestClass>("TestClass")
+    testClass.test();
+  });
+
 })
