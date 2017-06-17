@@ -17,7 +17,7 @@ This library extends the `bunyan` npm with factories to create Logger instances:
 ### Installation
 Install via `npm`
 ```
-npm i cdm-logger --save
+npm i @cdm-logger/<module> --save
 ```
 
 ## Example: Logstash Amqp
