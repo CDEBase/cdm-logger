@@ -23,7 +23,8 @@ npm i cdm-logger --save
 ## Example: Logstash Amqp
 
 ```typescript
-import {LogstashAmqpLogger,Logger,ILogstashAmqpLoggerSettings} from "cdm-logger";
+import {LogstashAmqpLogger,ILogstashAmqpLoggerSettings} from "@cdm-logger/amqp";
+import * as Logger from "bunyan";
 
 const settings: ILogstashAmqpLoggerSettings = {
   level: "info", // Optional: default 'info' ('trace'|'info'|'debug'|'warn'|'error'|'fatal')
@@ -47,7 +48,8 @@ const logger: Logger = LogstashAmqpLogger.create("<app name>", settings, console
 ## Example: Console
 
 ```typescript
-import {ConsoleLogger,Logger,IConsoleLoggerSettings} from "@cdm-logger/server";
+import {ConsoleLogger,IConsoleLoggerSettings} from "@cdm-logger/server";
+import * as Logger from "bunyan";
 
 const settings: IConsoleLoggerSettings = {
   level: "info", // Optional: default 'info' ('trace'|'info'|'debug'|'warn'|'error'|'fatal')
