@@ -1,7 +1,7 @@
 import * as Logger from "bunyan";
 import * as bunyanLogstashAmqp from "bunyan-logstash-amqp";
-import {ILoggerFactory,ILoggerSettings,makeLogger,getSettingsLevel,LoggerLevel} from "./core";
-import {getConsoleStream,IConsoleLoggerSettings} from "./consoleLogger";
+import {ILoggerFactory,ILoggerSettings,makeLogger,getSettingsLevel,LoggerLevel} from "@cdm-logger/core";
+import {getConsoleStream,IConsoleLoggerSettings} from "@cdm-logger/server";
 
 export interface ILogstashAmqpLoggerSettings extends ILoggerSettings {
   host: string;

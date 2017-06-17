@@ -1,5 +1,5 @@
 import * as Logger from "bunyan";
-import { ILoggerSettings, makeLogger, getSettingsLevel } from "./core";
+import { ILoggerSettings, makeLogger, getSettingsLevel } from "@cdm-logger/core";
 
 export interface IClientLoggerSettings extends ILoggerSettings {
   /** defaults to short */

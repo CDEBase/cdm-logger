@@ -1,5 +1,5 @@
 import * as Logger from "bunyan";
-import {ILoggerSettings,makeLogger,getSettingsLevel} from "./core";
+import {ILoggerSettings,makeLogger,getSettingsLevel} from "@cdm-logger/core";
 
 const PrettyStream = require('bunyan-prettystream');
 
@@ -33,3 +33,4 @@ export class ConsoleLogger {
     return makeLogger(name, getConsoleStream(settings));
   }
 }
+

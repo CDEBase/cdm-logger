@@ -1,4 +1,4 @@
-# cdm-logger
+# @cdm-logger
 
 TypeScript NodeJs Platform
 
@@ -8,8 +8,9 @@ A typescript library for Logging.
 
 This library extends the `bunyan` npm with factories to create Logger instances:
 
-1. ConsoleLogger - create a Console logger
-2. LogstashAmqpLogger - create a Logstash feed via Amqp
+1. @cdm-logger/server: ConsoleLogger - create a Console logger
+2. @cdm-logger/amqp: LogstashAmqpLogger - create a Logstash feed via Amqp
+3: @cdm-logger/client: ClientLogger - create a browser Console logger
 
 ## Getting Started
 
@@ -46,7 +47,7 @@ const logger: Logger = LogstashAmqpLogger.create("<app name>", settings, console
 ## Example: Console
 
 ```typescript
-import {ConsoleLogger,Logger,IConsoleLoggerSettings} from "cdm-logger";
+import {ConsoleLogger,Logger,IConsoleLoggerSettings} from "@cdm-logger/server";
 
 const settings: IConsoleLoggerSettings = {
   level: "info", // Optional: default 'info' ('trace'|'info'|'debug'|'warn'|'error'|'fatal')
@@ -104,12 +105,7 @@ Install `node_modules` via `npm`
 npm i
 ```
 
-Install `typings`
-```
-typings install
-```
-
 Build the project (using typescript compiler)
 ```
-npm run build
+npm run lerna
 ```

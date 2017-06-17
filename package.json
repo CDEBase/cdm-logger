@@ -1,13 +1,16 @@
 {
   "name": "cdm-logger",
   "version": "2.0.1",
+  "private": true,
   "description": "Universal - Logger",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
   "scripts": {
+    "lerna": "lerna bootstrap --hoist",
+    "install": "npm run lerna",
     "build": "tsc -p src/tsconfig.json -d",
     "debugtest": "npm run build && mocha --debug-brk",
-    "test": "npm run build && mocha "
+    "test": "jest"
   },
   "keywords": [
     "typescript",
@@ -16,6 +19,22 @@
   ],
   "author": "Veera Marni <marni.srikanth@gmail.com> (http://vm.com)",
   "license": "MIT",
+  "jest": {
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "lib"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "/__tests__/.*test*\\.(ts|tsx|js)$"
+  },
   "dependencies": {
     "@types/bunyan": "^1.8.0",
     "bunyan": "^1.8.10",
@@ -23,11 +42,13 @@
     "bunyan-prettystream": "^0.1.3"
   },
   "devDependencies": {
-    "@types/chai": "^4.0.0",
-    "chai": "^4.0.2",
+    "@types/jest": "^20.0.0",
     "inversify": "^4.1.1",
-    "mocha": "^3.4.2",
+    "jest": "^20.0.3",
+    "lerna": "^2.0.0-rc.5",
+    "rimraf": "^2.6.1",
     "reflect-metadata": "^0.1.10",
+    "ts-jest": "^20.0.4",
     "typescript": "^2.3.4"
   },
   "homepage": "https://github.com/cdmbase/cdm-logger",

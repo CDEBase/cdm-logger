@@ -1,0 +1,46 @@
+{
+  "name": "@cdm-logger/client",
+  "version": "2.0.1",
+  "description": "Universal - Logger",
+  "main": "./lib/index.js",
+  "typings": "./lib/index.d.ts",
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "npm run build:clean && npm run build:lib",
+    "build:clean": "rimraf lib",
+    "build:lib": "tsc -p tsconfig.json -d",
+    "jest": "./node_modules/.bin/jest",
+    "test": "jest",
+    "test:debug": "npm test -- --runInBand",
+    "test:watch": "npm test -- --watch"
+  },
+  "keywords": [
+    "typescript",
+    "bunyan",
+    "logger"
+  ],
+  "author": "CDMBase LLC",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@cdm-logger/core": "*",
+    "bunyan": "^1.8.10"
+  },
+  "dependencies": {
+    "@cdm-logger/core": "*"
+  },
+  "devDependencies": {
+    "rimraf": "^2.6.1",
+    "jest": "^20.0.3"
+  },
+  "homepage": "https://github.com/cdmbase/cdm-logger",
+  "repository": {
+    "type": "git",
+    "url": "git://git@github.com:cdmbase/cdm-logger.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cdmbase/cdm-logger/issues"
+  }
+}
