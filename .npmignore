@@ -1,6 +1,0 @@
-node_modules/
-source/
-test
-typings/
-.npmignore
-.node-version
