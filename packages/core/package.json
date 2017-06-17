@@ -1,6 +1,6 @@
 {
   "name": "@cdm-logger/core",
-  "version": "2.0.1",
+  "version": "3.0.1",
   "description": "Universal - Logger",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
@@ -43,8 +43,8 @@
     "bunyan": "^1.8.10"
   },
   "devDependencies": {
-    "rimraf": "^2.6.1",
-    "jest": "^20.0.3"
+    "jest": "^20.0.3",
+    "rimraf": "^2.6.1"
   },
   "homepage": "https://github.com/cdmbase/cdm-logger",
   "repository": {
