@@ -1,6 +1,6 @@
 {
   "name": "@cdm-logger/amqp",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Universal - Logger",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
@@ -25,13 +25,13 @@
   "author": "CDMBase LLC",
   "license": "MIT",
   "peerDependencies": {
-    "@cdm-logger/core": "^3.0.1",
-    "@cdm-logger/server": "^3.0.1",
+    "@cdm-logger/core": "^3.0.2",
+    "@cdm-logger/server": "^3.0.2",
     "bunyan": "^1.8.10"
   },
   "dependencies": {
-    "@cdm-logger/core": "^3.0.1",
-    "@cdm-logger/server": "^3.0.1",
+    "@cdm-logger/core": "^3.0.2",
+    "@cdm-logger/server": "^3.0.2",
     "bunyan-logstash-amqp": "1.0.7"
   },
   "devDependencies": {

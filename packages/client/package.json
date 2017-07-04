@@ -1,6 +1,6 @@
 {
   "name": "@cdm-logger/client",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Universal - Logger",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
@@ -25,11 +25,11 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@cdm-logger/core": "^3.0.1",
+    "@cdm-logger/core": "^3.0.2",
     "bunyan": "^1.8.10"
   },
   "dependencies": {
-    "@cdm-logger/core": "^3.0.1"
+    "@cdm-logger/core": "^3.0.2"
   },
   "devDependencies": {
     "jest": "^20.0.3",
