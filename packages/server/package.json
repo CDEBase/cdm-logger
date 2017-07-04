@@ -24,6 +24,21 @@
   ],
   "author": "CDMBase LLC",
   "license": "MIT",
+  "jest": {
+    "testEnvironment": "node",
+    "roots": [
+      "src"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "\\.(ts|tsx)$": "<rootDir>/../../node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "/__tests__/.*test*\\.(ts|tsx|js)$"
+  },
   "peerDependencies": {
     "@cdm-logger/core": "^3.0.2"
   },

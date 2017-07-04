@@ -40,9 +40,9 @@
     "testRegex": "/__tests__/.*test*\\.(ts|tsx|js)$"
   },
   "dependencies": {
-    "bunyan": "^1.8.10"
   },
   "devDependencies": {
+    "@types/bunyan": "^1.8.0",
     "jest": "^20.0.3",
     "rimraf": "^2.6.1"
   },

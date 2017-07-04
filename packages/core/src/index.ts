@@ -1,1 +1,1 @@
-export {ILoggerFactory,ILoggerSettings,getLoggerOptions,makeLogger,getSettingsLevel,LoggerLevel} from "./core";
+export {ILoggerFactory,ILoggerSettings,getLoggerOptions,makeLogger,getSettingsLevel,LoggerLevel, BunyanOptions, PinoOptions, PinoAdditionalOptions} from "./core";

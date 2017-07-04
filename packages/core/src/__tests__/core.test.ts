@@ -1,5 +1,6 @@
-import {getLoggerOptions, makeLogger} from "../index";
-import * as Logger from 'bunyan'
+import { getLoggerOptions, makeLogger, BunyanOptions, PinoOptions } from "../index";
+import * as Logger from 'bunyan';
+import * as Pino from 'pino';
 import 'jest'
 
 function testLogger(logger: Logger, msg: string) {
@@ -12,13 +13,25 @@ function testLogger(logger: Logger, msg: string) {
 }
 
 
-describe("getLoggerOptions", () => {
+describe("getLoggerOptions for bunyan", () => {
   it("should be able to getLoggerOptions with no streams", () => {
-    const options = getLoggerOptions("TestLog");
+    const options = getLoggerOptions({ name: "TestLog", kind: "bunyan" });
     expect(options).not.toBeNull;
     expect(options).not.toBeUndefined;
-    expect(options.streams).toBeUndefined;
-    expect(options.name).toEqual("TestLog");
-    testLogger(Logger.createLogger(options), "Raw Helllo")
+    expect((options as BunyanOptions).streams).toBeUndefined;
+    expect((options as BunyanOptions).name).toEqual("TestLog");
+    testLogger(Logger.createLogger(options as Logger.LoggerOptions), "Raw Helllo")
   });
 })
+
+// describe("getLoggerOptions for pino", () => {
+//   it("should be able to getLoggerOptions with no streams", () => {
+//     const pionOptions: Pino.LoggerOptions = getLoggerOptions({ name: "TestLog", kind: "pino" } as PinoOptions);
+//     expect(pionOptions).not.toBeNull;
+//     expect(pionOptions).not.toBeUndefined;
+//     expect((pionOptions as PinoOptions).streams).toBeUndefined;
+//     expect((pionOptions as PinoOptions).name).toEqual("TestLog");
+//     testLogger(Logger.createLogger(pionOptions as Pino.LoggerOptions), "Raw Helllo")
+//   });
+// })
+
