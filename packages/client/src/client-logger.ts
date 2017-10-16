@@ -13,7 +13,7 @@ export function getConsoleStream(settings?: ILoggerSettings): any {
         settings = {};
     }
 
-    const rawStream = new ConsoleStream(settings);
+    const rawStream = new ConsoleStream();
 
     return {
         level: getSettingsLevel(settings),
