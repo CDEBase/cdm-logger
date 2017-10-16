@@ -1,4 +1,3 @@
-import { omit } from 'ramda'
 import { DEBUG, WARN, INFO, ERROR, FATAL, LEVEL_NAMES, ILoggerSettings } from './interfaces';
 const REC_KEYS = ['level', 'name', 'msg', 'levelName', 'pid', 'time', 'v']
 
@@ -11,8 +10,20 @@ function padZeros(number, len) {
     return Array((len + 1) - (number + '').length).join('0') + number
 }
 
-export class ConsoleStream {
+function omit(array, obj) {
+  var keys = Object.keys(obj);
+  var res = {};
 
+  for (var i = 0; i < keys.length; i++) {
+    var key = keys[i];
+    var val = obj[key];
+    if(!array || array.indexOf(key) === -1 ){
+      res[key] = val;}
+    }
+  return res;
+}
+
+export class ConsoleStream {
     write(rec) {
         var loggerName = rec.childName ? rec.name + '/' + rec.childName : rec.name
 
@@ -43,10 +54,10 @@ export class ConsoleStream {
 
         /* eslint-disable no-console */
         console.log('[%s:%s:%s:%s] %c%s%c: %s: %c%s',
-            padZeros(rec.time.getHours(), 2), padZeros(rec.time.getMinutes(), 2),
-            padZeros(rec.time.getSeconds(), 2), padZeros(rec.time.getMilliseconds(), 4),
-            levelCss, levelName,
-            defaultCss, rest.context || loggerName,
-            msgCss, rec.msg, rest)
+        padZeros(rec.time.getHours(), 2), padZeros(rec.time.getMinutes(), 2),
+        padZeros(rec.time.getSeconds(), 2), padZeros(rec.time.getMilliseconds(), 4),
+        levelCss, levelName,
+        defaultCss, rest.context || loggerName,
+        msgCss, rec.msg, rest)
     }
 }
