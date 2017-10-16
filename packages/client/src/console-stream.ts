@@ -11,12 +11,12 @@ function padZeros(number, len) {
 }
 
 function omit(array, obj) {
-  var keys = Object.keys(obj);
-  var res = {};
+  const keys = Object.keys(obj);
+  const res = {};
 
-  for (var i = 0; i < keys.length; i++) {
-    var key = keys[i];
-    var val = obj[key];
+  for (let i = 0; i < keys.length; i++) {
+    let key = keys[i];
+    let val = obj[key];
     if(!array || array.indexOf(key) === -1 ){
       res[key] = val;}
     }
