@@ -203,8 +203,10 @@ describe("Console Logger for child classes", () => {
 
   @injectable()
   class TestClass {
-    constructor(@inject("logger") private logger: Logger) {
-      this.logger = logger.child({className: 'TestClass'})
+    private logger: Logger;
+
+    constructor(@inject("logger") logger1: Logger) {
+      this.logger = logger1.child({className: 'TestClass'})
     }
     test() {
       this.logger.info("This is to test child logger.")

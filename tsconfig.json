@@ -13,6 +13,7 @@
         "noImplicitAny": false,
         "removeComments": true,
         "sourceMap": false,
+        "inlineSourceMap": true,
         "noLib": false,
         "preserveConstEnums": false,
         "suppressImplicitAnyIndexErrors": true,

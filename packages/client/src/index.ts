@@ -1,1 +1,1 @@
-export * from './clientLogger'
+export * from './client-logger'
