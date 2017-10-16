@@ -36,7 +36,6 @@
     "testRegex": "/__tests__/.*test*\\.(ts|tsx|js)$"
   },
   "dependencies": {
-    "@types/bunyan": "^1.8.0",
     "browser-bunyan": "^0.4.0",
     "bunyan": "^1.8.10",
     "bunyan-logstash-amqp": "1.0.7",
@@ -44,7 +43,8 @@
     "ramda": "^0.25.0"
   },
   "devDependencies": {
-    "@types/browser-bunyan": "^0.4.2",
+    "@types/bunyan": "^1.8.0",
+    "@types/browser-bunyan": "^0.4.3",
     "@types/jest": "^20.0.0",
     "inversify": "^4.1.1",
     "jest": "^20.0.3",
