@@ -50,7 +50,7 @@ export class ConsoleStream {
         }
 
         var others = omit(REC_KEYS, rec)
-        var rest = Object.keys(others).length ? others : ''
+        var rest: any = Object.keys(others).length ? others : ''
 
         /* eslint-disable no-console */
         console.log('[%s:%s:%s:%s] %c%s%c: %s: %c%s',
