@@ -65,20 +65,20 @@ describe("Client Logger", () => {
   it("should be able to create a TRACE instance", () => {
 
     document.body.innerHTML =
-    '<div>' +
-    '  <span id="username" />' +
-    '  <button id="button">example<button>' +
-    '</div>';
+      '<div>' +
+      '  <span id="username" />' +
+      '  <button id="button">example<button>' +
+      '</div>';
 
     const logger: Logger = ClientLogger.create("TestLog");
-      $('#button').click(() => {
-        console.log('in', logger)
-        expect(logger).not.toBeUndefined;
-        expect(logger).not.toBeNull;
-        logger.trace('TestLog');
-      });
+    $('#button').click(() => {
+      console.log('in', logger)
+      expect(logger).not.toBeUndefined;
+      expect(logger).not.toBeNull;
+      logger.trace('TestLog');
+    });
 
-      $('#button').click();
+    $('#button').click();
 
   });
 
