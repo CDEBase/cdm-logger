@@ -9,9 +9,7 @@
     "lerna": "lerna bootstrap --hoist",
     "install": "npm run lerna",
     "build": "tsc -p src/tsconfig.json -d",
-    "publish": "npm run lerna:prepublish && lerna publish",
-    "lerna:prepublish": "git checkout publish && git merge -s recursive -X theirs master",
-    "publish:force": "npm run publish -- --force-publish=*",
+    "publish": "lerna publish",
     "debugtest": "npm run build && mocha --debug-brk",
     "test": "jest"
   },
