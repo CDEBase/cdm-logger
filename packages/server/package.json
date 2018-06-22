@@ -1,6 +1,6 @@
 {
   "name": "@cdm-logger/server",
-  "version": "5.0.3",
+  "version": "5.0.4",
   "description": "Universal - Logger",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
@@ -24,11 +24,8 @@
   ],
   "author": "CDMBase LLC",
   "license": "MIT",
-  "peerDependencies": {
-    "@cdm-logger/core": "^5.0.2"
-  },
   "dependencies": {
-    "@cdm-logger/core": "^5.0.3",
+    "@cdm-logger/core": "^5.0.4",
     "bunyan": "^1.8.10",
     "bunyan-prettystream": "^0.1.3"
   },
