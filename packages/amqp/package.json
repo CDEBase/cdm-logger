@@ -25,13 +25,13 @@
   "author": "CDMBase LLC",
   "license": "MIT",
   "peerDependencies": {
-    "@cdm-logger/core": "^3.0.2",
-    "@cdm-logger/server": "^4.0.0",
+    "@cdm-logger/core": "^undefined-alpha.ec89722b",
+    "@cdm-logger/server": "^undefined-alpha.ec89722b",
     "bunyan": "^1.8.10"
   },
   "dependencies": {
-    "@cdm-logger/core": "^3.0.2",
-    "@cdm-logger/server": "^4.0.0",
+    "@cdm-logger/core": "^undefined-alpha.ec89722b",
+    "@cdm-logger/server": "^undefined-alpha.ec89722b",
     "bunyan-logstash-amqp": "1.0.7"
   },
   "devDependencies": {

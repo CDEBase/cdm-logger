@@ -25,10 +25,10 @@
   "author": "CDMBase LLC",
   "license": "MIT",
   "peerDependencies": {
-    "@cdm-logger/core": "^3.0.2"
+    "@cdm-logger/core": "^undefined-alpha.ec89722b"
   },
   "dependencies": {
-    "@cdm-logger/core": "^3.0.2",
+    "@cdm-logger/core": "^undefined-alpha.ec89722b",
     "bunyan": "^1.8.10",
     "bunyan-prettystream": "^0.1.3"
   },
