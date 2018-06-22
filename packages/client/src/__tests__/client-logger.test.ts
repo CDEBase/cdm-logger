@@ -9,7 +9,7 @@ const { JSDOM } = jsdom;
 
 const $ = require('jquery');
 
-function testLogger(logger: Logger, msg: string) {
+function testLogger(logger, msg: string) {
   logger.trace(msg);
   logger.debug(msg);
   logger.info(msg);
@@ -69,7 +69,7 @@ describe("Client Logger", () => {
       '  <button id="button">example<button>' +
       '</div>';
 
-    const logger: Logger = ClientLogger.create("TestLog");
+    const logger = ClientLogger.create("TestLog");
     $('#button').click(() => {
       console.log('in', logger)
       expect(logger).not.toBeUndefined;

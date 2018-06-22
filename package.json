@@ -1,6 +1,6 @@
 {
   "name": "cdm-logger",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "private": true,
   "description": "Universal - Logger",
   "main": "./lib/index.js",
@@ -9,6 +9,9 @@
     "lerna": "lerna bootstrap --hoist",
     "install": "npm run lerna",
     "build": "tsc -p src/tsconfig.json -d",
+    "publish": "npm run lerna:prepublish && lerna publish",
+    "lerna:prepublish": "git checkout publish && git merge -s recursive -X theirs master",
+    "publish:force": "npm run publish -- --force-publish=*",
     "debugtest": "npm run build && mocha --debug-brk",
     "test": "jest"
   },
@@ -36,14 +39,14 @@
     "testRegex": "/__tests__/.*test*\\.(ts|tsx|js)$"
   },
   "dependencies": {
-    "browser-bunyan": "^0.4.0",
+    "browser-bunyan": "^1.3.0",
     "bunyan": "^1.8.10",
     "bunyan-logstash-amqp": "1.0.7",
     "bunyan-prettystream": "^0.1.3"
   },
   "devDependencies": {
-    "@types/browser-bunyan": "^0.4.3",
-    "@types/bunyan": "^1.8.0",
+    "@types/browser-bunyan": "^0.4.4",
+    "@types/bunyan": "^1.8.4",
     "@types/jest": "^20.0.0",
     "inversify": "^4.1.1",
     "jest": "^20.0.3",

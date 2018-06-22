@@ -25,11 +25,11 @@ export class ClientLogger {
     }
 }
 
-export function getLoggerOptions(name: string, ...streams: Logger.Stream[]): Logger.LoggerOptions {
+export function getLoggerOptions(name: string, ...streams) {
     if (!name) {
         throw Error("Cannot create LoggerOptions without a log name")
     }
-    const options: Logger.LoggerOptions = {
+    const options: any = {
         name: name,
         src: false,
         serializers: Logger.stdSerializers,
@@ -40,7 +40,7 @@ export function getLoggerOptions(name: string, ...streams: Logger.Stream[]): Log
     return options;;
 }
 
-export function makeLogger(name: string | Object, ...streams: Logger.Stream[]): Logger {
+export function makeLogger(name: string | Object, ...streams) {
     const logName = typeof name === "object" ? name.constructor.toString().match(/class ([\w|_]+)/)[1] : name
     return Logger.createLogger(getLoggerOptions(logName, ...streams));
 }
