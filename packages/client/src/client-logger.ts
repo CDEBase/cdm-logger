@@ -1,6 +1,4 @@
 import * as Logger from 'browser-bunyan'
-// import * as Logger from 'browser-bunyan';
-// import { ILoggerSettings, makeLogger, getSettingsLevel } from "@cdm-logger/core";
 import { ILoggerSettings } from './interfaces';
 
 import { ConsoleStream } from './console-stream';

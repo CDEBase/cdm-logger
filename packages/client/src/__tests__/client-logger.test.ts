@@ -1,5 +1,4 @@
-import { getLoggerOptions, makeLogger } from '@cdm-logger/core'
-import { createLogger } from "bunyan";
+// import { getLoggerOptions, makeLogger } from '@cdm-logger/core'
 import * as Logger from 'browser-bunyan'
 import { ClientLogger, getConsoleStream } from '../client-logger'
 import { ILoggerSettings } from '../interfaces';
@@ -19,9 +18,9 @@ function testLogger(logger: Logger, msg: string) {
   logger.fatal(msg);
 }
 
-function createMultiLogger(name: string | Object, settings1: any, settings2: any) {
-  return makeLogger(name, getConsoleStream(settings1), getConsoleStream(settings2));
-}
+// function createMultiLogger(name: string | Object, settings1: any, settings2: any) {
+//   return makeLogger(name, getConsoleStream(settings1), getConsoleStream(settings2));
+// }
 
 describe("Client Logger", () => {
   // it("should be able to create a TRACE instance", () => {

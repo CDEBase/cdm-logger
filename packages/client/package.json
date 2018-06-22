@@ -40,10 +40,8 @@
     },
     "testRegex": "/__tests__/.*test*\\.(ts|tsx|js)$"
   },
-  "peerDependencies": {
-    "browser-bunyan": "^0.4.0"
-  },
   "dependencies": {
+    "browser-bunyan": "^0.4.0",
     "stream": "0.0.2"
   },
   "devDependencies": {
