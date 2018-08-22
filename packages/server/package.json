@@ -27,7 +27,8 @@
   "dependencies": {
     "@cdm-logger/core": "^5.0.4",
     "bunyan": "^1.8.10",
-    "bunyan-prettystream": "^0.1.3"
+    "bunyan-prettystream": "^0.1.3",
+    "bunyan-prettystream-circularsafe": "^0.3.1"
   },
   "devDependencies": {
     "jest": "^20.0.3",
