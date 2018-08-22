@@ -1,6 +1,6 @@
 {
   "name": "@cdm-logger/amqp",
-  "version": "5.0.4",
+  "version": "5.0.5",
   "description": "Universal - Logger",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@cdm-logger/core": "^5.0.4",
-    "@cdm-logger/server": "^5.0.4",
+    "@cdm-logger/server": "^5.0.5",
     "bunyan-logstash-amqp": "1.0.7"
   },
   "devDependencies": {
