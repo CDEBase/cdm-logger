@@ -1,6 +1,6 @@
 {
   "name": "@cdm-logger/core",
-  "version": "5.0.4",
+  "version": "6.0.0",
   "description": "Universal - Logger",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
@@ -39,8 +39,6 @@
       "\\.(ts|tsx)$": "<rootDir>/../../node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "/__tests__/.*test*\\.(ts|tsx|js)$"
-  },
-  "dependencies": {
   },
   "devDependencies": {
     "jest": "^20.0.3",
