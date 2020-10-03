@@ -1,6 +1,6 @@
 import * as Logger from "bunyan";
 import * as bunyanLogstashAmqp from "bunyan-logstash-amqp";
-import {ILoggerFactory,ILoggerSettings,makeLogger,getSettingsLevel,LoggerLevel} from "@cdm-logger/core";
+import {ILoggerFactory,ILoggerSettings,makeLogger,getSettingsLevel, CdmLogger } from "@cdm-logger/core";
 import {getConsoleStream,IConsoleLoggerSettings} from "@cdm-logger/server";
 
 export interface ILogstashAmqpLoggerSettings extends ILoggerSettings {
@@ -9,7 +9,7 @@ export interface ILogstashAmqpLoggerSettings extends ILoggerSettings {
   exchange?: string;
 }
 
-export function getLogstashAmqpStream(settings: ILogstashAmqpLoggerSettings): Logger.Stream {
+export function getLogstashAmqpStream(settings: ILogstashAmqpLoggerSettings): CdmLogger.Stream {
   if (!settings) {
     throw new Error("Cannot create a LogstashAmqpLogger without settings")
   }
@@ -38,6 +38,6 @@ export class LogstashAmqpLogger {
       streams.push(getConsoleStream(consoleLoggerSettings));
     }
 
-    return makeLogger(name, ...streams);
+    return makeLogger(Logger, name, ...streams);
   }
 }

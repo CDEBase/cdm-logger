@@ -1,6 +1,8 @@
-import * as Logger from 'bunyan'
+import { CdmLogger } from '@cdm-logger/core'
 import {LogstashAmqpLogger} from "../index";
 import 'jest'
+
+type Logger = CdmLogger.ILogger;
 
 function testLogger(logger: Logger, msg: string) {
   logger.trace(msg);
