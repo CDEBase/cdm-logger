@@ -8,7 +8,8 @@
   "scripts": {
     "lerna": "lerna bootstrap --hoist",
     "install": "npm run lerna",
-    "build": "tsc -p src/tsconfig.json -d",
+    "build": "npm run build:packages",
+    "build:packages": "lerna run build --ignore *server",
     "publish": "lerna publish",
     "debugtest": "npm run build && mocha --debug-brk",
     "test": "jest"

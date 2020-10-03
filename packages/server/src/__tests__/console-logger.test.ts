@@ -1,12 +1,12 @@
 import 'reflect-metadata';
 import { injectable, inject, Container } from 'inversify'
 import {ConsoleLogger, IConsoleLoggerSettings,getConsoleStream} from "../index";
-import { getLoggerOptions, makeLogger } from '@cdm-logger/core'
+import { getLoggerOptions, makeLogger, CdmLogger } from '@cdm-logger/core'
 import {createLogger} from "bunyan";
 import 'jest'
-import * as Logger from 'bunyan'
 
-function testLogger(logger: Logger, msg: string) {
+
+function testLogger(logger: CdmLogger.ILogger, msg: string) {
   logger.trace(msg);
   logger.debug(msg);
   logger.info(msg);
@@ -107,28 +107,28 @@ describe("Console Logger", () => {
       level: "trace"
     }
 
-    const logger: Logger = ConsoleLogger.create("TestLog", settings);
+    const logger: CdmLogger.ILogger = ConsoleLogger.create("TestLog", settings);
     expect(logger).not.toBeUndefined;
     expect(logger).not.toBeNull;
     testLogger(logger, settings.level)
   });
 
   it("should be able to create an instance without settings", () => {
-    const logger: Logger = ConsoleLogger.create("TestLog");
+    const logger: CdmLogger.ILogger = ConsoleLogger.create("TestLog");
     expect(logger).not.toBeUndefined;
     expect(logger).not.toBeNull;
     testLogger(logger, "INFO")
   });
 
   it("should be able to create an instance with 2 streams at different levels", () => {
-    const logger: Logger = createMultiLogger("TestLog", {mode: "long", level: "trace"}, {mode: "short", level: "warn"});
+    const logger: CdmLogger.ILogger = createMultiLogger("TestLog", {mode: "long", level: "trace"}, {mode: "short", level: "warn"});
     expect(logger).not.toBeUndefined;
     expect(logger).not.toBeNull;
     testLogger(logger, "long/trace + short/warn")
   });
 
   it("should be able to create an instance with 2 streams at different levels", () => {
-    const logger: Logger = createMultiLogger("TestLog", {mode: "long", level: "warn"}, {mode: "short", level: "trace"});
+    const logger: CdmLogger.ILogger = createMultiLogger("TestLog", {mode: "long", level: "warn"}, {mode: "short", level: "trace"});
     expect(logger).not.toBeUndefined;
     expect(logger).not.toBeNull;
     testLogger(logger, "long/warn + short/trace")
@@ -147,28 +147,28 @@ describe("Console Logger using Constructor", () => {
       level: "trace"
     }
 
-    const logger: Logger = ConsoleLogger.create(instance, settings);
+    const logger: CdmLogger.ILogger = ConsoleLogger.create(instance, settings);
     expect(logger).not.toBeUndefined;
     expect(logger).not.toBeNull;
     testLogger(logger, settings.level)
   });
 
   it("should be able to create an instance without settings", () => {
-    const logger: Logger = ConsoleLogger.create(instance);
+    const logger: CdmLogger.ILogger = ConsoleLogger.create(instance);
     expect(logger).not.toBeUndefined;
     expect(logger).not.toBeNull;
     testLogger(logger, "INFO")
   });
 
   it("should be able to create an instance with 2 streams at different levels", () => {
-    const logger: Logger = createMultiLogger(instance, {mode: "long", level: "trace"}, {mode: "short", level: "warn"});
+    const logger: CdmLogger.ILogger = createMultiLogger(instance, {mode: "long", level: "trace"}, {mode: "short", level: "warn"});
     expect(logger).not.toBeUndefined;
     expect(logger).not.toBeNull;
     testLogger(logger, "long/trace + short/warn")
   });
 
   it("should be able to create an instance with 2 streams at different levels", () => {
-    const logger: Logger = createMultiLogger(instance, {mode: "long", level: "warn"}, {mode: "short", level: "trace"});
+    const logger: CdmLogger.ILogger = createMultiLogger(instance, {mode: "long", level: "warn"}, {mode: "short", level: "trace"});
     expect(logger).not.toBeUndefined;
     expect(logger).not.toBeNull;
     testLogger(logger, "long/warn + short/trace")
@@ -179,7 +179,7 @@ describe("Console Logger using inversify", () => {
 
   @injectable()
   class TestClass {
-    constructor(@inject("logger") private logger: Logger) {
+    constructor(@inject("logger") private logger: CdmLogger.ILogger) {
 
     }
     test() {
@@ -188,7 +188,7 @@ describe("Console Logger using inversify", () => {
   }
   const container = new Container();
   const consoleLogger = ConsoleLogger.create("ioc")
-  container.bind<Logger>("logger").toConstantValue(consoleLogger)
+  container.bind<CdmLogger.ILogger>("logger").toConstantValue(consoleLogger)
   container.bind<TestClass>("TestClass").to(TestClass)
 
   it("should be able to create a TRACE instance", () => {
@@ -203,9 +203,9 @@ describe("Console Logger for child classes", () => {
 
   @injectable()
   class TestClass {
-    private logger: Logger;
+    private logger: CdmLogger.ILogger;
 
-    constructor(@inject("logger") logger1: Logger) {
+    constructor(@inject("logger") logger1: CdmLogger.ILogger) {
       this.logger = logger1.child({className: 'TestClass'})
     }
     test() {
@@ -214,7 +214,7 @@ describe("Console Logger for child classes", () => {
   }
   const container = new Container();
   const consoleLogger = ConsoleLogger.create("ioc")
-  container.bind<Logger>("logger").toConstantValue(consoleLogger)
+  container.bind<CdmLogger.ILogger>("logger").toConstantValue(consoleLogger)
   container.bind<TestClass>("TestClass").to(TestClass)
 
   it("should be able to create a TRACE instance", () => {

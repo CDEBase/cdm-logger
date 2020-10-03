@@ -9,6 +9,7 @@
     "build": "npm run build:clean && npm run build:lib",
     "build:clean": "rimraf lib",
     "build:lib": "tsc -p tsconfig.json -d",
+    "build:lib:watch": "npm run build:lib -- --watch",
     "jest": "./node_modules/.bin/jest",
     "test": "jest",
     "test:debug": "npm test -- --runInBand",
@@ -40,7 +41,6 @@
     "testRegex": "/__tests__/.*test*\\.(ts|tsx|js)$"
   },
   "dependencies": {
-    "bunyan": "^1.8.10"
   },
   "devDependencies": {
     "jest": "^20.0.3",

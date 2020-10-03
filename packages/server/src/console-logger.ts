@@ -1,5 +1,5 @@
 import * as Logger from "bunyan";
-import {ILoggerSettings,makeLogger,getSettingsLevel} from "@cdm-logger/core";
+import {ILoggerSettings,makeLogger,getSettingsLevel, CdmLogger } from "@cdm-logger/core";
 
 const PrettyStream = require('bunyan-prettystream-circularsafe');
 
@@ -8,7 +8,7 @@ export interface IConsoleLoggerSettings extends ILoggerSettings {
   mode?: "short" | "long" | "dev" | "raw";
 }
 
-export function getConsoleStream(settings?: IConsoleLoggerSettings): Logger.Stream {
+export function getConsoleStream(settings?: IConsoleLoggerSettings): CdmLogger.Stream {
   if (!settings) {
     settings = {};
   }
@@ -30,7 +30,6 @@ export function getConsoleStream(settings?: IConsoleLoggerSettings): Logger.Stre
 
 export class ConsoleLogger {
   static create(name: string | Object, settings?: IConsoleLoggerSettings) {
-    return makeLogger(name, getConsoleStream(settings));
+    return makeLogger(Logger, name, getConsoleStream(settings) as any);
   }
 }
-
