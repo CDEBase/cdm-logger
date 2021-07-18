@@ -1,1 +1,1 @@
-export {LogstashAmqpLogger,ILogstashAmqpLoggerSettings,getLogstashAmqpStream} from "./logstashAmqpLogger";
+export {LogstashAmqpLogger,ILogstashAmqpLoggerSettings,getLogstashAmqpStream} from './logstashAmqpLogger';

@@ -6,7 +6,8 @@
     "declarationDir": "./lib",
     "typeRoots": [
       "node_modules/@types"
-    ]
+    ],
+    "skipLibCheck": true
   },
   "exclude": [
     "node_modules",

@@ -1,6 +1,6 @@
-import { ConsoleLogger, IConsoleLoggerSettings } from './console-logger';
 import { CdmLogger } from '@cdm-logger/core';
 import * as Logger from 'bunyan';
+import { ConsoleLogger, IConsoleLoggerSettings } from './console-logger';
 
 const settings: IConsoleLoggerSettings = {
     level: process.env.LOG_LEVEL as CdmLogger.LoggerLevel  || 'info',

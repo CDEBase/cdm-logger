@@ -1,15 +1,15 @@
 {
   "name": "@cdm-logger/core",
-  "version": "6.0.0",
+  "version": "1.0.0",
   "description": "Universal - Logger",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
   "scripts": {
-    "prepublish": "npm run build",
-    "build": "npm run build:clean && npm run build:lib",
+    "prepublish": "yarn build",
+    "build": "yarn build:clean && yarn build:lib",
     "build:clean": "rimraf lib",
     "build:lib": "tsc -p tsconfig.json -d",
-    "build:lib:watch": "npm run build:lib -- --watch",
+    "build:lib:watch": "yarn build:lib -- --watch",
     "jest": "./node_modules/.bin/jest",
     "test": "jest",
     "test:debug": "npm test -- --runInBand",
@@ -39,10 +39,6 @@
       "\\.(ts|tsx)$": "<rootDir>/../../node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "/__tests__/.*test*\\.(ts|tsx|js)$"
-  },
-  "devDependencies": {
-    "jest": "^20.0.3",
-    "rimraf": "^2.6.1"
   },
   "homepage": "https://github.com/cdmbase/cdm-logger",
   "repository": {

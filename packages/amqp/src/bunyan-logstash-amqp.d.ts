@@ -1,4 +1,4 @@
-declare module "bunyan-logstash-amqp" {
+declare module 'bunyan-logstash-amqp' {
   interface IBunyanLogstashAmqp {
     createStream(options?: IBunyanLogstashAmqpOptions): NodeJS.WritableStream;
   }

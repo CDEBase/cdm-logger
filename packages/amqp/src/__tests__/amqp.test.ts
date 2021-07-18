@@ -1,5 +1,5 @@
 import { CdmLogger } from '@cdm-logger/core'
-import {LogstashAmqpLogger} from "../index";
+import {LogstashAmqpLogger} from '../index';
 import 'jest'
 
 type Logger = CdmLogger.ILogger;
@@ -13,16 +13,16 @@ function testLogger(logger: Logger, msg: string) {
   logger.fatal(msg);
 }
 
-describe("Logstash Amqp Logger", () => {
-  it("should be able to create a TRACE instance", () => {
-    const logger = LogstashAmqpLogger.create("api", { host: "127.0.0.1", port: 5672, exchange: "logs", level: "trace"}, {
-      level: "warn",
-      mode: "short"
+describe('Logstash Amqp Logger', () => {
+  it('should be able to create a TRACE instance', () => {
+    const logger = LogstashAmqpLogger.create('api', { host: '127.0.0.1', port: 5672, exchange: 'logs', level: 'trace'}, {
+      level: 'warn',
+      mode: 'short'
     });
 
     expect(logger).not.toBeUndefined;
     expect(logger).not.toBeNull;
-    testLogger(logger, "trace + warn")
+    testLogger(logger, 'trace + warn')
   });
 })
 

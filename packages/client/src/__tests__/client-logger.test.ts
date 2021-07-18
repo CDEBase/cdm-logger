@@ -22,54 +22,54 @@ function testLogger(logger, msg: string) {
 //   return makeLogger(name, getConsoleStream(settings1), getConsoleStream(settings2));
 // }
 
-describe("Client Logger", () => {
-  // it("should be able to create a TRACE instance", () => {
+describe('Client Logger', () => {
+  // it('should be able to create a TRACE instance', () => {
   //   const settings: ILoggerSettings = {
-  //     level: "trace"
+  //     level: 'trace'
   //   }
   //
-  //   const logger: Logger = ClientLogger.create("TestLog", settings);
+  //   const logger: Logger = ClientLogger.create('TestLog', settings);
   //   expect(logger).not.toBeUndefined;
   //   expect(logger).not.toBeNull;
   //   testLogger(logger, settings.level)
   // });
   //
-  // it("should be able to create an instance without settings", () => {
-  //   const logger: Logger = ClientLogger.create("TestLog");
+  // it('should be able to create an instance without settings', () => {
+  //   const logger: Logger = ClientLogger.create('TestLog');
   //   expect(logger).not.toBeUndefined;
   //   expect(logger).not.toBeNull;
-  //   testLogger(logger, "INFO")
+  //   testLogger(logger, 'INFO')
   // });
 
-  // it("should be able to create a INFO instance", () => {
+  // it('should be able to create a INFO instance', () => {
   //   const settings: ILoggerSettings = {
-  //     level: "info"
+  //     level: 'info'
   //   }
   //
-  //   const logger: Logger = ClientLogger.create("TestLog", settings);
+  //   const logger: Logger = ClientLogger.create('TestLog', settings);
   //   expect(logger).not.toBeUndefined;
   //   expect(logger).not.toBeNull;
   //   testLogger(logger, settings.level)
   // });
   //
-  // it("should be able to create a child instance", () => {
+  // it('should be able to create a child instance', () => {
   //   const logger: Logger = ClientLogger.create('FullStack', { level: 'trace' });
   //   expect(logger).not.toBeUndefined;
   //   expect(logger).not.toBeNull;
   //
   //   const newlog = logger.child({ childName: 'UIController' });
-  //   testLogger(newlog,  "Trace")
+  //   testLogger(newlog,  'Trace')
   // });
 
-  it("should be able to create a TRACE instance", () => {
+  it('should be able to create a TRACE instance', () => {
 
     document.body.innerHTML =
       '<div>' +
-      '  <span id="username" />' +
-      '  <button id="button">example<button>' +
+      '  <span id='username' />' +
+      '  <button id='button'>example<button>' +
       '</div>';
 
-    const logger = ClientLogger.create("TestLog");
+    const logger = ClientLogger.create('TestLog');
     $('#button').click(() => {
       console.log('in', logger)
       expect(logger).not.toBeUndefined;
@@ -81,17 +81,17 @@ describe("Client Logger", () => {
 
   });
 
-  // it("should be able to create an instance with 2 streams at different levels", () => {
-  //   const logger: Logger = createMultiLogger("TestLog", { level: "trace" }, { level: "warn" });
+  // it('should be able to create an instance with 2 streams at different levels', () => {
+  //   const logger: Logger = createMultiLogger('TestLog', { level: 'trace' }, { level: 'warn' });
   //   expect(logger).not.toBeUndefined;
   //   expect(logger).not.toBeNull;
-  //   testLogger(logger, "long/trace + short/warn")
+  //   testLogger(logger, 'long/trace + short/warn')
   // });
 
-  // it("should be able to create an instance with 2 streams at different levels", () => {
-  //   const logger: Logger = createMultiLogger("TestLog", { level: "warn" }, { level: "trace" });
+  // it('should be able to create an instance with 2 streams at different levels', () => {
+  //   const logger: Logger = createMultiLogger('TestLog', { level: 'warn' }, { level: 'trace' });
   //   expect(logger).not.toBeUndefined;
   //   expect(logger).not.toBeNull;
-  //   testLogger(logger, "long/warn + short/trace")
+  //   testLogger(logger, 'long/warn + short/trace')
   // });
 })

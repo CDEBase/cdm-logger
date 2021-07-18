@@ -1,1 +1,1 @@
-/// <reference path="./bunyan-logstash-amqp.d.ts"/>
+/// <reference path='./bunyan-logstash-amqp.d.ts'/>

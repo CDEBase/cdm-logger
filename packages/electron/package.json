@@ -1,12 +1,12 @@
 {
   "name": "@cdm-logger/electron",
-  "version": "6.0.0",
+  "version": "1.0.0",
   "description": "Universal - Logger",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
   "scripts": {
-    "prepublish": "npm run build",
-    "build": "npm run build:clean && npm run build:lib",
+    "prepublish": "yarn build",
+    "build": "yarn build:clean && yarn build:lib",
     "build:clean": "rimraf lib",
     "build:lib": "tsc -p tsconfig.json -d",
     "jest": "./node_modules/.bin/jest",
@@ -25,14 +25,12 @@
   "author": "CDMBase LLC",
   "license": "MIT",
   "dependencies": {
-    "@cdm-logger/core": "^6.0.0",
-    "@cdm-logger/server": "^6.0.0"
+    "@cdm-logger/core": "link:../core",
+    "@cdm-logger/server": "link:../server"
   },
   "devDependencies": {
-    "@types/electron": "1.6.10",
-    "electron": "11.4.10",
-    "jest": "^20.0.3",
-    "rimraf": "^2.6.1"
+    "@types/electron": "^1.6.10",
+    "electron": "^11.4.10"
   },
   "homepage": "https://github.com/cdmbase/cdm-logger",
   "repository": {

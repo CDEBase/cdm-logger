@@ -4,7 +4,7 @@ import { ILoggerSettings } from './interfaces';
 import { ConsoleStream } from './console-stream';
 
 export function getSettingsLevel(settings: ILoggerSettings) {
-    return settings.level || "info";
+    return settings.level || 'info';
 }
 export function getConsoleStream(settings?: ILoggerSettings): any {
     if (!settings) {
@@ -27,7 +27,7 @@ export class ClientLogger {
 
 export function getLoggerOptions(name: string, ...streams) {
     if (!name) {
-        throw Error("Cannot create LoggerOptions without a log name")
+        throw Error('Cannot create LoggerOptions without a log name')
     }
     const options: any = {
         name: name,
@@ -41,6 +41,6 @@ export function getLoggerOptions(name: string, ...streams) {
 }
 
 export function makeLogger(name: string | Object, ...streams) {
-    const logName = typeof name === "object" ? name.constructor.toString().match(/class ([\w|_]+)/)[1] : name
+    const logName = typeof name === 'object' ? name.constructor.toString().match(/class ([\w|_]+)/)[1] : name
     return Logger.createLogger(getLoggerOptions(logName, ...streams));
 }

@@ -1,7 +1,7 @@
 
 export interface IClientLoggerSettings extends ILoggerSettings {
     /** defaults to short */
-    mode?: "short" | "long" | "dev" | "raw";
+    mode?: 'short' | 'long' | 'dev' | 'raw';
 }
 
 
