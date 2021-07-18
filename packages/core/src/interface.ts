@@ -4,7 +4,8 @@ import { EventEmitter } from 'events';
 
 export = CdmLogger;
 declare namespace CdmLogger {
-    type LoggerLevel = 'fatal' | 'error' | 'warn' | 'info' | 'debug' | 'trace';
+    type LogLevelString = 'trace' | 'debug' | 'info' | 'warn' | 'error' | 'fatal';
+    type LoggerLevel = LogLevelString | number;
     type LevelWithSilent = LoggerLevel | 'silent';
 
     interface BaseLogger extends EventEmitter {
