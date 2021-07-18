@@ -36,7 +36,7 @@ describe("getLoggerOptions", () => {
     expect(options).not.toBeNull;
     expect(options.streams.length).toEqual(1);
     expect(options.name).toEqual("TestLog");
-    testLogger(createLogger(options), settings.level)
+    testLogger(createLogger(options), settings.level as string)
   });
 
   it("should be able to getLoggerOptions with default level of INFO - short mode", () => {
@@ -110,7 +110,7 @@ describe("Console Logger", () => {
     const logger: CdmLogger.ILogger = ConsoleLogger.create("TestLog", settings);
     expect(logger).not.toBeUndefined;
     expect(logger).not.toBeNull;
-    testLogger(logger, settings.level)
+    testLogger(logger, settings.level as string)
   });
 
   it("should be able to create an instance without settings", () => {
@@ -150,7 +150,7 @@ describe("Console Logger using Constructor", () => {
     const logger: CdmLogger.ILogger = ConsoleLogger.create(instance, settings);
     expect(logger).not.toBeUndefined;
     expect(logger).not.toBeNull;
-    testLogger(logger, settings.level)
+    testLogger(logger, settings.level as string)
   });
 
   it("should be able to create an instance without settings", () => {
