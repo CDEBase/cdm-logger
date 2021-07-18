@@ -22,7 +22,7 @@ export function getLogstashAmqpStream(settings: ILogstashAmqpLoggerSettings): Cd
     type: "raw",
     level,
     stream: bunyanLogstashAmqp.createStream({
-      level,
+      level: level as string,
       host: settings.host,
       port: settings.port,
       exchange: settings.exchange || "logs"
