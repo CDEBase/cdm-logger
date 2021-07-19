@@ -1,4 +1,4 @@
-export {ILoggerFactory,ILoggerSettings,getLoggerOptions,makeLogger,getSettingsLevel} from "./core";
-import * as CdmLogger from './interface';
+import { CdmLogger, Configuration, Appender } from './interfaces';
+export { ILoggerFactory, ILoggerSettings, getLoggerOptions, makeLogger, getSettingsLevel } from "./core";
 
-export { CdmLogger };
+export { CdmLogger, Configuration, Appender };

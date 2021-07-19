@@ -1,4 +1,4 @@
-import * as CdmLogger from './interface';
+import { CdmLogger } from './interfaces';
 
 export interface ILoggerFactory {
   create(): CdmLogger.ILogger;
