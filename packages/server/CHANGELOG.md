@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.7](https://github.com/cdmbase/cdm-logger/compare/v7.0.6...v7.0.7) (2021-07-19)
+
+**Note:** Version bump only for package @cdm-logger/server
+
+
+
+
+
 ## [7.0.6](https://github.com/cdmbase/cdm-logger/compare/v7.0.5...v7.0.6) (2021-07-19)
 
 **Note:** Version bump only for package @cdm-logger/server
