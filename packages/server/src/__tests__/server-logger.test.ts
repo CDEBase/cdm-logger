@@ -23,7 +23,6 @@ describe('getLoggerOptions', () => {
         }
 
         const options = getLoggerOptions('TestLog', getFileLogStream(settings, 'TestLog'));
-        console.log('---Options', options);
         expect(options).not.toBeUndefined;
         expect(options).not.toBeNull;
         expect(options.streams.length).toEqual(1);

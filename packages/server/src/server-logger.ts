@@ -14,14 +14,10 @@ export function getFileLogStream(settings: IFileLoggerSettings, name: string) {
     const logFile = path.join(settings.logPath, `${name}.log`);
     return {
         level: getSettingsLevel(settings),
-        streams: [
-            {
-                type: 'rotating-file',
-                path: logFile,
-                period: settings.period || '1d',
-                count: settings.period || 3,
-            }
-        ]
+        type: 'rotating-file',
+        path: logFile,
+        period: settings.period || '1d',
+        count: settings.period || 3 as any,
     }
 }
 
