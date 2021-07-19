@@ -65,8 +65,8 @@ describe('Client Logger', () => {
 
     document.body.innerHTML =
       '<div>' +
-      '  <span id='username' />' +
-      '  <button id='button'>example<button>' +
+      '  <span id="username" />' +
+      '  <button id="button">example<button>' +
       '</div>';
 
     const logger = ClientLogger.create('TestLog');
