@@ -5,7 +5,9 @@
     "outDir": "./lib",
     "declarationDir": "lib",
     "types": [
-      "@types/jest"
+      "@types/jest",
+      "@types/node",
+      "electron"
     ]
   },
   "exclude": [
