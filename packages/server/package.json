@@ -1,6 +1,6 @@
 {
   "name": "@cdm-logger/server",
-  "version": "7.0.2",
+  "version": "7.0.3",
   "description": "Universal - Logger",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
@@ -25,7 +25,7 @@
   "author": "CDMBase LLC",
   "license": "MIT",
   "dependencies": {
-    "@cdm-logger/core": "^7.0.2",
+    "@cdm-logger/core": "^7.0.3",
     "bunyan": "^1.8.15",
     "bunyan-prettystream-circularsafe": "^0.3.1"
   },
@@ -37,5 +37,5 @@
   "bugs": {
     "url": "https://github.com/cdmbase/cdm-logger/issues"
   },
-  "gitHead": "8452d1b75f25c349210585532e56a3645ec4ea17"
+  "gitHead": "d627635adf383dd9dc06bf4a0ce0869fa9e90c12"
 }
