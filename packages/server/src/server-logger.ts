@@ -2,6 +2,7 @@ import * as Logger from 'bunyan';
 import * as path from 'path';
 import * as mkdirp from 'mkdirp';
 import { ILoggerSettings, makeLogger, getSettingsLevel, CdmLogger } from '@cdm-logger/core';
+const PrettyStream = require('bunyan-prettystream-circularsafe');
 
 export interface IFileLoggerSettings extends ILoggerSettings, Logger.Stream {
     /** defaults to short */
@@ -10,8 +11,10 @@ export interface IFileLoggerSettings extends ILoggerSettings, Logger.Stream {
 }
 
 export function getFileLogStream(settings: IFileLoggerSettings, name: string) {
-    mkdirp.sync(settings.logPath);
-    const logFile = path.join(settings.logPath, `${name}.log`);
+    const pathParse = path.parse(name);
+    const logDir = `${settings.logPath}/${pathParse.dir}`;
+    mkdirp.sync(logDir);
+    const logFile = path.join(logDir, `${pathParse.name}.log`);
     return {
         level: getSettingsLevel(settings),
         type: 'rotating-file',

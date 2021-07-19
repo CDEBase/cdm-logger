@@ -1,4 +1,4 @@
-import * as Logger from 'bunyan';
+  import * as Logger from 'bunyan';
 import {ILoggerSettings,makeLogger,getSettingsLevel, CdmLogger } from '@cdm-logger/core';
 
 const PrettyStream = require('bunyan-prettystream-circularsafe');
