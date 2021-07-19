@@ -28,8 +28,8 @@
     "bunyan": "^1.8.15"
   },
   "dependencies": {
-    "@cdm-logger/core": "link:../core",
-    "@cdm-logger/server": "link:../server",
+    "@cdm-logger/core": "^7.0.1",
+    "@cdm-logger/server": "^7.0.1",
     "bunyan-logstash-amqp": "1.0.7"
   },
   "homepage": "https://github.com/cdmbase/cdm-logger",
@@ -39,5 +39,6 @@
   },
   "bugs": {
     "url": "https://github.com/cdmbase/cdm-logger/issues"
-  }
+  },
+  "gitHead": "8452d1b75f25c349210585532e56a3645ec4ea17"
 }
