@@ -1,6 +1,6 @@
 {
   "name": "@cdm-logger/amqp",
-  "version": "7.0.4",
+  "version": "7.0.5",
   "description": "Universal - Logger",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@cdm-logger/core": "^7.0.4",
-    "@cdm-logger/server": "^7.0.4",
+    "@cdm-logger/server": "^7.0.5",
     "bunyan-logstash-amqp": "1.0.7"
   },
   "homepage": "https://github.com/cdmbase/cdm-logger",
