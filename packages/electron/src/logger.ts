@@ -4,9 +4,10 @@ import * as os from 'os';
 
 
 const appPath = variables.getAppData(os.platform);
-const logPath = `${appPath}/logs`
 const nameAndVersion = variables.getNameAndVersion();
 const appName = nameAndVersion.name;
+const logPath = `${appPath}/${appName}/logs`
+
 export const logger = FileLogger.create(appName, { logPath });
 
 export const getLogger = (name: string) => FileLogger.create(name, { logPath });
