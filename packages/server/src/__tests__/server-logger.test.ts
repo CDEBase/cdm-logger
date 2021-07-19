@@ -19,7 +19,7 @@ describe('getLoggerOptions', () => {
         const settings: IFileLoggerSettings = {
             mode: 'long',
             level: 'warn',
-            logPath: 'tmp',
+            logPath: '/tmp',
         }
 
         const options = getLoggerOptions('TestLog', getFileLogStream(settings, 'TestLog'));
@@ -27,6 +27,23 @@ describe('getLoggerOptions', () => {
         expect(options).not.toBeNull;
         expect(options.streams.length).toEqual(1);
         expect(options.name).toEqual('TestLog');
+        expect(options.streams[0].path).toEqual(`/tmp/TestLog.log`);
+        testLogger(createLogger(options), settings.level as string)
+    });
+
+    it('should be able to getLoggerOptions with nested path', () => {
+        const settings: IFileLoggerSettings = {
+            mode: 'long',
+            level: 'warn',
+            logPath: '/tmp',
+        }
+
+        const options = getLoggerOptions('logs/TestLog', getFileLogStream(settings, 'logs/TestLog'));
+        expect(options).not.toBeUndefined;
+        expect(options).not.toBeNull;
+        expect(options.streams.length).toEqual(1);
+        expect(options.name).toEqual('logs/TestLog');
+        expect(options.streams[0].path).toEqual(`/tmp/logs/TestLog.log`);
         testLogger(createLogger(options), settings.level as string)
     });
 
