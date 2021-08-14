@@ -1,4 +1,5 @@
 import * as Logger from 'browser-bunyan'
+import { CdmLogger } from '@cdm-logger/core';
 import { ILoggerSettings } from './interfaces';
 
 import { ConsoleStream } from './console-stream';
@@ -42,5 +43,5 @@ export function getLoggerOptions(name: string, ...streams) {
 
 export function makeLogger(name: string | Object, ...streams) {
     const logName = typeof name === 'object' ? name.constructor.toString().match(/class ([\w|_]+)/)[1] : name
-    return Logger.createLogger(getLoggerOptions(logName, ...streams));
+    return Logger.createLogger(getLoggerOptions(logName, ...streams)) as unknown as CdmLogger.ILogger;
 }

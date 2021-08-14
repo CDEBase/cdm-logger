@@ -1,8 +1,9 @@
 import { ClientLogger } from './client-logger';
 import { LoggerLevel } from './interfaces';
 
-const appName = (typeof process !== 'undefined' && process.env && process.env.APP_NAME) || 'FullStack';
-const logLevel: LoggerLevel = (typeof process !== 'undefined' && process.env && process.env.LOG_LEVEL) as LoggerLevel|| 'info';
+const APP_ENV = typeof process !== 'undefined' && (process['APP_ENV'] || process.env || {})
+const appName = APP_ENV.APP_NAME || 'FullStack';
+const logLevel: LoggerLevel = APP_ENV.LOG_LEVEL as LoggerLevel || 'info';
 const logger = ClientLogger.create(appName, { level: logLevel });
 
 export { logger };
