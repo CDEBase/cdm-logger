@@ -41,7 +41,7 @@
     "testRegex": "/__tests__/.*test*\\.(ts|tsx|js)$"
   },
   "dependencies": {
-    "@cdm-logger/core": "link:../core",
+    "@cdm-logger/core": "^7.0.7",
     "browser-bunyan": "~1.6.3",
     "stream": "0.0.2"
   },
@@ -53,5 +53,5 @@
   "bugs": {
     "url": "https://github.com/cdmbase/cdm-logger/issues"
   },
-  "gitHead": "876ab2d0ffcf94485f8758d016b921d8d26b593c"
+  "gitHead": "9338b71a426ebb82fdc8d9a0d0713c99c740a2f7"
 }
