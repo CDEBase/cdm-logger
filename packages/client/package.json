@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@cdm-logger/core": "link:../core",
-    "browser-bunyan": "^1.6.3",
+    "browser-bunyan": "~1.6.3",
     "stream": "0.0.2"
   },
   "homepage": "https://github.com/cdmbase/cdm-logger",

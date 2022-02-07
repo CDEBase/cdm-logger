@@ -213,12 +213,12 @@
     "@babel/helper-validator-identifier" "^7.14.5"
     to-fast-properties "^2.0.0"
 
-"@browser-bunyan/console-formatted-stream@^1.6.2":
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/@browser-bunyan/console-formatted-stream/-/console-formatted-stream-1.6.2.tgz#e458a1913b952249afa4be3fde0d7b3068ab9507"
-  integrity sha512-RFY4VG5+ewPG5A4LC3uN4AC8MIXEjlUJ568VlXhdMDfV9/LUrUX1LUbf0UmFQ3OhI2jqbeC31XwP0gBIrwbXpw==
+"@browser-bunyan/console-formatted-stream@^1.6.4":
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/@browser-bunyan/console-formatted-stream/-/console-formatted-stream-1.8.0.tgz#dda9dcab6ce445cbf2911045709930757e5d48c1"
+  integrity sha512-Lg5SC2uXrvZ6aLwLZT6SErfN1Is4NcrTOb5km4BW/BfL8Lv0CfpsYuhuD7ltdURL6awTYBUiT+BwhKw1Xd9glQ==
   dependencies:
-    "@browser-bunyan/levels" "^1.6.0"
+    "@browser-bunyan/levels" "^1.8.0"
 
 "@browser-bunyan/console-plain-stream@^1.6.0":
   version "1.6.0"
@@ -238,6 +238,11 @@
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/@browser-bunyan/levels/-/levels-1.6.0.tgz#3a50b8118254aa2ac26caf9d2aafa72d157e374b"
   integrity sha512-wte6nXXZH62Y/RGysYRlOkKxuJn+4S8xEamMF0fDncxxy0SriCHYwGPyWGF0FWYWmRzbZuEkp7dNebBf9Xfeeg==
+
+"@browser-bunyan/levels@^1.8.0":
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/@browser-bunyan/levels/-/levels-1.8.0.tgz#1c0a98d04284e0620e8ee414d7ce43385080a5cf"
+  integrity sha512-f9oSDik8kAl+4rhVyHqIr012P1boHFUKc7D9nzA5+lDsFoP90UQnDwpseqBdF2mTaWYju10E7h+GdH8u+7MHOQ==
 
 "@cdm-logger/core@link:packages/core":
   version "1.0.0"
@@ -2051,12 +2056,12 @@ brorand@^1.0.1, brorand@^1.1.0:
   resolved "https://registry.yarnpkg.com/brorand/-/brorand-1.1.0.tgz#12c25efe40a45e3c323eb8675a0a0ce57b22371f"
   integrity sha1-EsJe/kCkXjwyPrhnWgoM5XsiNx8=
 
-browser-bunyan@^1.6.3:
-  version "1.6.3"
-  resolved "https://registry.yarnpkg.com/browser-bunyan/-/browser-bunyan-1.6.3.tgz#0e58c51ff48507317ba8e5cf579e8b6bad7281e0"
-  integrity sha512-HRg+acpwO3dsY2RWgtjw2wPVHV+uzbCrdhUxD25+qo5NFSTpbfJekrRP0yFNypAhG5LwXFV1Dc5FIc8cxwU5rQ==
+browser-bunyan@~1.6.3:
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/browser-bunyan/-/browser-bunyan-1.6.5.tgz#16b5c7143a355cf148168b14ab3add4a7dbac1a3"
+  integrity sha512-s2F12D1W+jG/AcNqXVHQG0w/U8min7fa/42aw1Qjgf0+v+fKtSv5TnZwDYnRvKy4rqmzgbT+BDcPqPoCq2SYkQ==
   dependencies:
-    "@browser-bunyan/console-formatted-stream" "^1.6.2"
+    "@browser-bunyan/console-formatted-stream" "^1.6.4"
     "@browser-bunyan/console-plain-stream" "^1.6.0"
     "@browser-bunyan/console-raw-stream" "^1.6.0"
     "@browser-bunyan/levels" "^1.6.0"
