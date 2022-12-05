@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@types/electron": "^1.6.10",
-    "electron": "^11.4.10"
+    "electron": "^15.5.5"
   },
   "homepage": "https://github.com/cdmbase/cdm-logger",
   "repository": {
