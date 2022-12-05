@@ -8,7 +8,7 @@
     "prepublish": "yarn build",
     "build": "yarn build:clean && yarn build:lib",
     "build:clean": "rimraf lib",
-    "build:lib": "webpack",
+    "build:lib": "tsc",
     "build:lib:watch": "yarn build:lib -- --watch",
     "jest": "./node_modules/.bin/jest",
     "test": "jest",
