@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.1](https://github.com/cdmbase/cdm-logger/compare/v7.0.14...v8.0.1) (2024-03-09)
+
+**Note:** Version bump only for package @cdm-logger/amqp
+
+
+
+
+
 ## [7.0.14](https://github.com/cdmbase/cdm-logger/compare/v7.0.13...v7.0.14) (2022-12-05)
 
 **Note:** Version bump only for package @cdm-logger/amqp
