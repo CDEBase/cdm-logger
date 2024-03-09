@@ -3,6 +3,7 @@
   "version": "8.0.2",
   "description": "Universal - Logger",
   "main": "./lib/index.js",
+  "type": "module",
   "typings": "./lib/index.d.ts",
   "scripts": {
     "prepublish": "yarn build",
