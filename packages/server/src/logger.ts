@@ -1,5 +1,4 @@
 import { CdmLogger } from '@cdm-logger/core';
-import * as Logger from 'bunyan';
 import { ConsoleLogger, IConsoleLoggerSettings } from './console-logger';
 
 const settings: IConsoleLoggerSettings = {
