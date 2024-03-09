@@ -1,27 +1,33 @@
 {
-    "compileOnSave": false,
     "compilerOptions": {
-        "target": "es2017",
-        "module": "commonjs",
-        "moduleResolution": "node",
-        "jsx": "react",
-        "declaration": true,
-        "experimentalDecorators": true,
-        "preserveConstEnums": true,
-        "sourceMap": true,
-        "noImplicitAny": false,
-        "allowSyntheticDefaultImports": false,
-        "pretty": true,
-        "removeComments": false,
-        "skipLibCheck": true,
-        "lib": [
-          "es2017",
-          "dom",
-          "esnext.asynciterable"
-        ],
-        "types": [
-            "@types/node",
-            "@types/jest"
-        ]
-    }
-}
+      "target": "es2020",
+      "module": "es2020",
+      "moduleResolution": "node",
+      "esModuleInterop": true,
+      "jsx": "react",
+      "skipLibCheck": true,
+      "declaration": true,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "preserveConstEnums": true,
+      "sourceMap": true,
+      "noImplicitAny": false,
+      "allowSyntheticDefaultImports": true,
+      "pretty": true,
+      "removeComments": false,
+      "lib": [
+        "ES2020",
+        "dom",
+        "esnext.asynciterable"
+      ],
+      "typeRoots": [
+        "./typings",
+        "node_modules/@types"
+      ],
+    },
+    "include": ["src", "typings/*.d.ts"],
+    "exclude": [
+      "node_modules"
+    ]
+  }
+  

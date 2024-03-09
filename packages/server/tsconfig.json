@@ -6,6 +6,7 @@
     "declarationDir": "lib",
     "skipLibCheck": true
   },
+  "include": ["src"],
   "exclude": [
     "node_modules",
     "lib",
