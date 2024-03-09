@@ -1,6 +1,6 @@
 {
   "name": "@cdm-logger/amqp",
-  "version": "8.0.1",
+  "version": "8.0.2",
   "description": "Universal - Logger",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
@@ -28,8 +28,8 @@
     "bunyan": "^1.8.15"
   },
   "dependencies": {
-    "@cdm-logger/core": "^8.0.1",
-    "@cdm-logger/server": "^8.0.1",
+    "@cdm-logger/core": "^8.0.2",
+    "@cdm-logger/server": "^8.0.2",
     "bunyan-logstash-amqp": "1.0.7"
   },
   "homepage": "https://github.com/cdmbase/cdm-logger",
@@ -40,5 +40,5 @@
   "bugs": {
     "url": "https://github.com/cdmbase/cdm-logger/issues"
   },
-  "gitHead": "876ab2d0ffcf94485f8758d016b921d8d26b593c"
+  "gitHead": "0394aed3d9235b51469fff3ae9c1b769ea0a11e3"
 }

@@ -1,6 +1,6 @@
 {
   "name": "@cdm-logger/client",
-  "version": "8.0.1",
+  "version": "8.0.2",
   "description": "Universal - Logger",
   "main": "./lib/index.js",
   "type": "module",
@@ -42,7 +42,7 @@
     "testRegex": "/__tests__/.*test*\\.(ts|tsx|js)$"
   },
   "dependencies": {
-    "@cdm-logger/core": "^8.0.1",
+    "@cdm-logger/core": "^8.0.2",
     "browser-bunyan": "~1.6.3",
     "stream": "0.0.2"
   },
@@ -54,5 +54,5 @@
   "bugs": {
     "url": "https://github.com/cdmbase/cdm-logger/issues"
   },
-  "gitHead": "9338b71a426ebb82fdc8d9a0d0713c99c740a2f7"
+  "gitHead": "0394aed3d9235b51469fff3ae9c1b769ea0a11e3"
 }
