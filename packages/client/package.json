@@ -1,6 +1,6 @@
 {
   "name": "@cdm-logger/client",
-  "version": "8.0.6",
+  "version": "8.0.7",
   "description": "Universal - Logger",
   "main": "./lib/index.js",
   "type": "module",
@@ -42,7 +42,7 @@
     "testRegex": "/__tests__/.*test*\\.(ts|tsx|js)$"
   },
   "dependencies": {
-    "@cdm-logger/core": "^8.0.2",
+    "@cdm-logger/core": "^8.0.7",
     "browser-bunyan": "~1.6.3",
     "stream": "0.0.2"
   },
