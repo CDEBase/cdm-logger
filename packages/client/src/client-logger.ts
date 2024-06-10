@@ -2,7 +2,7 @@ import Logger from 'pino';
 import { CdmLogger } from '@cdm-logger/core';
 import { ILoggerSettings } from './interfaces';
 
-import { ConsoleStream } from './console-stream';
+// import { ConsoleStream } from './console-stream';
 
 export function getSettingsLevel(settings: ILoggerSettings) {
     return settings.level || 'info';
@@ -12,11 +12,16 @@ export function getConsoleStream(settings?: ILoggerSettings): any {
         settings = {};
     }
 
-    const rawStream = new ConsoleStream();
+    // const rawStream = new ConsoleStream();
 
     return {
         level: getSettingsLevel(settings),
-        stream: rawStream
+        transport: {
+            target: 'pino-pretty',
+            options: {
+              colorize: true
+            }
+        }
     }
 }
 
@@ -32,9 +37,11 @@ export function getLoggerOptions(name: string, others: any = {}) {
     }
     const options: any = {
         name: name,
-        browser: {
-            asObject: true,
-            serialize: true
+        transport: {
+            target: 'pino-pretty',
+            options: {
+              colorize: true
+            }
         },
         ...others
     }

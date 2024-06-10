@@ -69,7 +69,8 @@
     }
   },
   "dependencies": {
-    "pino": "^9.1.0"
+    "pino": "^9.1.0",
+    "pino-pretty": "^9.1.0"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^11.1.6",
