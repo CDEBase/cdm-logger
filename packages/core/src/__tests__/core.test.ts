@@ -1,8 +1,8 @@
 import {getLoggerOptions, makeLogger} from "../index";
-import * as Logger from 'bunyan'
-import 'jest'
+import Logger from 'pino';
+import 'jest';
 
-function testLogger(logger: Logger, msg: string) {
+function testLogger(logger: any, msg: string) {
   logger.trace(msg);
   logger.debug(msg);
   logger.info(msg);
@@ -19,6 +19,6 @@ describe("getLoggerOptions", () => {
     expect(options).not.toBeUndefined;
     expect(options.streams).toBeUndefined;
     expect(options.name).toEqual("TestLog");
-    testLogger(Logger.createLogger(options), "Raw Helllo")
+    testLogger(Logger(options), "Raw Helllo");
   });
 })

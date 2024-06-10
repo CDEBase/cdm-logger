@@ -1,9 +1,9 @@
-import * as Logger from 'bunyan';
+import Logger from 'pino';
 import * as path from 'path';
 import * as mkdirp from 'mkdirp';
 import { ILoggerSettings, makeLogger, getSettingsLevel } from '@cdm-logger/core';
 
-export interface IFileLoggerSettings extends ILoggerSettings, Logger.Stream {
+export interface IFileLoggerSettings extends ILoggerSettings {
     /** defaults to short */
     mode?: 'short' | 'long' | 'dev' | 'raw';
     logPath: string;
@@ -16,10 +16,9 @@ export function getFileLogStream(settings: IFileLoggerSettings, name: string) {
     const logFile = path.join(logDir, `${pathParse.name}.log`);
     return {
         level: getSettingsLevel(settings),
-        type: 'rotating-file',
-        path: logFile,
-        period: settings.period || '1d',
-        count: settings.period || 3 as any,
+        dest: logFile,
+        minLength: 4096, // Buffer before writing
+        sync: false,
     }
 }
 

@@ -10,7 +10,7 @@
     "build": "yarn build:clean && yarn build:lib",
     "build:clean": "rimraf lib",
     "build:lib": "rollup -c rollup.config.mjs",
-    "jest": "./node_modules/.bin/jest",
+    "jest": "../../node_modules/.bin/jest",
     "test": "jest",
     "test:debug": "npm test -- --runInBand",
     "test:watch": "npm test -- --watch"
@@ -25,8 +25,29 @@
   ],
   "author": "CDMBase LLC",
   "license": "MIT",
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "jsdom",
+    "roots": [
+      "src"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "testRegex": "/__tests__/.*test*\\.(ts|tsx|js)$",
+    "testPathIgnorePatterns": ["/node_modules/"],
+    "transform": {
+      "node_modules/(@cdm-logger/core)/.+\\.(j|t)sx?$": "ts-jest",
+      "^.+\\.js$": "babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!@cdm-logger\/core)/"
+    ]
+  },
   "dependencies": {
-    "@cdm-logger/core": "^8.0.7",
+    "@cdm-logger/core": "link:../core",
     "bunyan": "^1.8.15",
     "bunyan-prettystream-circularsafe": "^0.3.1"
   },

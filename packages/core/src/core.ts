@@ -1,3 +1,4 @@
+import type { LevelWithSilentOrString } from 'pino';
 import * as CdmLogger from './interface';
 
 export interface ILoggerFactory {
@@ -6,41 +7,30 @@ export interface ILoggerFactory {
 
 export interface ILoggerSettings {
   /** defaults to INFO */
-  level?: CdmLogger.LoggerLevel;
+  level?: LevelWithSilentOrString;
 }
 
 export function getSettingsLevel(settings: ILoggerSettings) {
   return settings.level || "info";
 }
 
-export function makeLogger(logger: any, name: string | Object, ...streams: CdmLogger.Stream[]): CdmLogger.ILogger {
+export function makeLogger(logger: any, name: string | Object, options: CdmLogger.LoggerOptions = {}): CdmLogger.ILogger {
   const logName = typeof name === "object" ? name.constructor.toString().match(/class ([\w|_]+)/)[1] : name
-  return logger.createLogger(getLoggerOptions(logName, ...streams));
+  if (options.dest) {
+    const destination = logger.destination(getLoggerOptions(logName, options));
+    return logger(destination);
+  }
+  
+  return logger(getLoggerOptions(logName, options));
 }
 
-export function getLoggerOptions(name: string, ...streams: CdmLogger.Stream[]): CdmLogger.LoggerOptions {
+export function getLoggerOptions(name: string, others: CdmLogger.LoggerOptions = {}): CdmLogger.LoggerOptions {
   if (!name) {
     throw Error("Cannot create LoggerOptions without a log name")
   }
   const options: CdmLogger.LoggerOptions = {
     name: name,
-    src: true,
-    serializers: {
-      err: err => {
-        return <any>{
-          message: err.message,
-          name: err.name,
-          stack: err.stack,
-          code: err.code,
-          signal: err.signal,
-          internalMessage: err.internalMessage,
-          errors: err.errors
-        };
-      }
-    }
+    ...others,
   }
-  if (streams && streams.length) {
-    options.streams = streams;
-  }
-  return options;;
+  return options;
 }

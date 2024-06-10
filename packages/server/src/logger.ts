@@ -1,8 +1,9 @@
 import { CdmLogger } from '@cdm-logger/core';
+import type { LevelWithSilentOrString } from 'pino';
 import { ConsoleLogger, IConsoleLoggerSettings } from './console-logger';
 
 const settings: IConsoleLoggerSettings = {
-    level: process.env.LOG_LEVEL as CdmLogger.LoggerLevel  || 'info',
+    level: process.env.LOG_LEVEL as LevelWithSilentOrString || 'info',
 };
 
 const appName = process.env.APP_NAME || 'CDM_APP';

@@ -1,4 +1,5 @@
 import { EventEmitter } from "events";
+import type { LevelWithSilentOrString } from 'pino';
 
 export type LogLevelString =
   | "trace"
@@ -181,12 +182,10 @@ export interface Serializers {
   [key: string]: SerializerFn;
 }
 export interface LoggerOptions {
-  name: string;
-  streams?: Stream[];
-  level?: LoggerLevel;
-  stream?: Stream | any;
+  name?: string;
+  level?: LevelWithSilentOrString;
+  dest?: string;
   serializers?: Serializers;
-  src?: boolean;
   [custom: string]: any;
 }
 

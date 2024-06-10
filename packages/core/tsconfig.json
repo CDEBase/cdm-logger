@@ -1,14 +1,10 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "sourceMap": false,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
     "rootDir": "./src",
-    "outDir": "lib",
+    "outDir": "./lib",
     "declarationDir": "lib",
-    "declaration": true,
-    "declarationMap": true
+    "skipLibCheck": true
   },
   "include": ["src"],
   "exclude": [

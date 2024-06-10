@@ -1,4 +1,4 @@
-import * as Logger from 'browser-bunyan'
+import Logger from 'pino';
 import { CdmLogger } from '@cdm-logger/core';
 import { ILoggerSettings } from './interfaces';
 
@@ -26,22 +26,22 @@ export class ClientLogger {
     }
 }
 
-export function getLoggerOptions(name: string, ...streams) {
+export function getLoggerOptions(name: string, others: any = {}) {
     if (!name) {
         throw Error('Cannot create LoggerOptions without a log name')
     }
     const options: any = {
         name: name,
-        src: false,
-        serializers: Logger.stdSerializers,
-    }
-    if (streams && streams.length) {
-        options.streams = streams;
+        browser: {
+            asObject: true,
+            serialize: true
+        },
+        ...others
     }
     return options;;
 }
 
-export function makeLogger(name: string | Object, ...streams) {
+export function makeLogger(name: string | Object, options: any = {}) {
     const logName = typeof name === 'object' ? name.constructor.toString().match(/class ([\w|_]+)/)[1] : name
-    return Logger.createLogger(getLoggerOptions(logName, ...streams)) as unknown as CdmLogger.ILogger;
+    return Logger(getLoggerOptions(logName, options)) as unknown as CdmLogger.ILogger;
 }

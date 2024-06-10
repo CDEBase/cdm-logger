@@ -68,6 +68,9 @@
       "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     }
   },
+  "dependencies": {
+    "pino": "^9.1.0"
+  },
   "devDependencies": {
     "@rollup/plugin-typescript": "^11.1.6",
     "@types/browser-bunyan": "^0.4.6",

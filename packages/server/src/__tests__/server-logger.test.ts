@@ -2,10 +2,10 @@ import 'reflect-metadata';
 import { injectable, inject, Container } from 'inversify'
 import { getFileLogStream, IFileLoggerSettings } from '../server-logger';
 import { getLoggerOptions, makeLogger, CdmLogger } from '@cdm-logger/core'
-import { createLogger } from 'bunyan';
+import Logger from 'pino';
 import 'jest'
 
-function testLogger(logger: CdmLogger.ILogger, msg: string) {
+function testLogger(logger: any, msg: string) {
     logger.trace(msg);
     logger.debug(msg);
     logger.info(msg);
@@ -28,7 +28,7 @@ describe('getLoggerOptions', () => {
         expect(options.streams.length).toEqual(1);
         expect(options.name).toEqual('TestLog');
         expect(options.streams[0].path).toEqual(`/tmp/TestLog.log`);
-        testLogger(createLogger(options), settings.level as string)
+        testLogger(Logger(options), settings.level as string)
     });
 
     it('should be able to getLoggerOptions with nested path', () => {
@@ -44,7 +44,7 @@ describe('getLoggerOptions', () => {
         expect(options.streams.length).toEqual(1);
         expect(options.name).toEqual('logs/TestLog');
         expect(options.streams[0].path).toEqual(`/tmp/logs/TestLog.log`);
-        testLogger(createLogger(options), settings.level as string)
+        testLogger(Logger(options), settings.level as string)
     });
 
 });
