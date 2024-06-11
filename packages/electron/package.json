@@ -1,6 +1,6 @@
 {
   "name": "@cdm-logger/electron",
-  "version": "8.0.7",
+  "version": "9.0.1",
   "description": "Universal - Logger",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",

@@ -1,6 +1,6 @@
 {
   "name": "@cdm-logger/server",
-  "version": "8.0.7",
+  "version": "9.0.1",
   "description": "Universal - Logger",
   "main": "./lib/index.js",
   "type": "module",
@@ -37,13 +37,15 @@
       "js"
     ],
     "testRegex": "/__tests__/.*test*\\.(ts|tsx|js)$",
-    "testPathIgnorePatterns": ["/node_modules/"],
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
     "transform": {
       "node_modules/(@cdm-logger/core)/.+\\.(j|t)sx?$": "ts-jest",
       "^.+\\.js$": "babel-jest"
     },
     "transformIgnorePatterns": [
-      "node_modules/(?!@cdm-logger\/core)/"
+      "node_modules/(?!@cdm-logger/core)/"
     ]
   },
   "dependencies": {
