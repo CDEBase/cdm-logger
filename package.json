@@ -5,7 +5,7 @@
   "description": "Universal - Logger",
   "keywords": [
     "typescript",
-    "bunyan",
+    "pino",
     "logger"
   ],
   "homepage": "https://github.com/cdmbase/cdm-logger",
@@ -30,6 +30,7 @@
     "bootstrap": "yarn && yarn lerna",
     "postbootstrap": "yarn build",
     "build": "yarn build:packages",
+    "build:clean": "lerna exec yarn build:clean",
     "build:packages": "lerna run build --ignore *server ",
     "clean": "lerna clean --yes && yarn build:clean && rimraf node_modules",
     "clean:force": "rimraf package-lock.json yarn.lock && yarn clean",
@@ -68,14 +69,8 @@
       "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     }
   },
-  "dependencies": {
-    "pino": "^9.1.0",
-    "pino-pretty": "^9.1.0"
-  },
   "devDependencies": {
     "@rollup/plugin-typescript": "^11.1.6",
-    "@types/browser-bunyan": "^0.4.6",
-    "@types/bunyan": "^1.8.6",
     "@types/electron": "^1.6.10",
     "@types/jest": "^24.0.24",
     "inversify": "^4.1.1",

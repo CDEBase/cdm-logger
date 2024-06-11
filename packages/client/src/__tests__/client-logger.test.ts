@@ -1,5 +1,4 @@
 // import { getLoggerOptions, makeLogger } from '@cdm-logger/core'
-import * as Logger from 'browser-bunyan'
 import { ClientLogger, getConsoleStream } from '../client-logger'
 import { ILoggerSettings } from '../interfaces';
 import 'jest'
