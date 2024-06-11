@@ -21,11 +21,14 @@
   },
   "keywords": [
     "typescript",
-    "bunyan",
+    "pino",
     "logger"
   ],
   "author": "CDMBase LLC",
   "license": "MIT",
+  "dependencies": {
+    "pino": "^9.1.0"
+  },
   "jest": {
     "testEnvironment": "node",
     "roots": [

@@ -1,6 +1,5 @@
 import Logger from 'pino';
-import { ILoggerSettings, makeLogger, getSettingsLevel, CdmLogger } from '@cdm-logger/core';
-// import PrettyStream from 'bunyan-prettystream-circularsafe';
+import { ILoggerSettings, makeLogger, getSettingsLevel } from '@cdm-logger/core';
 
 export interface IConsoleLoggerSettings extends ILoggerSettings {
   /** defaults to short */

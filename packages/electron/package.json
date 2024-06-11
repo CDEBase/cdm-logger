@@ -19,14 +19,14 @@
   },
   "keywords": [
     "typescript",
-    "bunyan",
+    "pino",
     "logger"
   ],
   "author": "CDMBase LLC",
   "license": "MIT",
   "dependencies": {
-    "@cdm-logger/core": "^8.0.7",
-    "@cdm-logger/server": "^8.0.7"
+    "@cdm-logger/core": "link:../core",
+    "@cdm-logger/server": "link:../server"
   },
   "devDependencies": {
     "@types/electron": "^1.6.10",
