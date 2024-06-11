@@ -81,7 +81,7 @@
     "inversify": "^4.1.1",
     "jest": "^24.9.0",
     "jquery": "^3.2.1",
-    "lerna": "^4.0.0",
+    "lerna": "^6.1.0",
     "reflect-metadata": "^0.1.10",
     "rimraf": "^3.0.0",
     "ts-jest": "^24.2.0",
