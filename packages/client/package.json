@@ -42,7 +42,7 @@
     "testRegex": "/__tests__/.*test*\\.(ts|tsx|js)$"
   },
   "dependencies": {
-    "@cdm-logger/core": "link:../core",
+    "@cdm-logger/core": "8.0.7",
     "browser-bunyan": "~1.6.3",
     "stream": "0.0.2"
   },

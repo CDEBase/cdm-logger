@@ -37,17 +37,19 @@
       "js"
     ],
     "testRegex": "/__tests__/.*test*\\.(ts|tsx|js)$",
-    "testPathIgnorePatterns": ["/node_modules/"],
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
     "transform": {
       "node_modules/(@cdm-logger/core)/.+\\.(j|t)sx?$": "ts-jest",
       "^.+\\.js$": "babel-jest"
     },
     "transformIgnorePatterns": [
-      "node_modules/(?!@cdm-logger\/core)/"
+      "node_modules/(?!@cdm-logger/core)/"
     ]
   },
   "dependencies": {
-    "@cdm-logger/core": "link:../core",
+    "@cdm-logger/core": "8.0.7",
     "bunyan": "^1.8.15",
     "bunyan-prettystream-circularsafe": "^0.3.1"
   },
