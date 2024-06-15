@@ -50,6 +50,7 @@
   },
   "dependencies": {
     "@cdm-logger/core": "link:../core",
+    "bunyan": "^1.8.15",
     "pino": "^9.1.0",
     "pino-pretty": "^9.1.0"
   },

@@ -27,7 +27,6 @@
   "author": "CDMBase LLC",
   "license": "MIT",
   "dependencies": {
-    "bunyan": "^1.8.15",
     "pino": "^9.1.0"
   },
   "jest": {
