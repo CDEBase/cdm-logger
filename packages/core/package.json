@@ -1,6 +1,6 @@
 {
   "name": "@cdm-logger/core",
-  "version": "9.0.3",
+  "version": "9.0.4",
   "description": "Universal - Logger",
   "main": "./lib/index.js",
   "type": "module",

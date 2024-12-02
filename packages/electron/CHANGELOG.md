@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.0.4](https://github.com/cdmbase/cdm-logger/compare/v9.0.3...v9.0.4) (2024-12-02)
+
+**Note:** Version bump only for package @cdm-logger/electron
+
+
+
+
+
 ## [9.0.3](https://github.com/cdmbase/cdm-logger/compare/v9.0.2...v9.0.3) (2024-06-15)
 
 **Note:** Version bump only for package @cdm-logger/electron
