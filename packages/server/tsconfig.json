@@ -8,6 +8,7 @@
   },
   "include": ["src"],
   "exclude": [
+    "**/**/*.test.ts",
     "node_modules",
     "lib",
     "dist",

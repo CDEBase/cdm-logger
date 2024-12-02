@@ -1,9 +1,9 @@
+import { describe, it, expect } from 'vitest';
 import 'reflect-metadata';
 import { injectable, inject, Container } from 'inversify'
 import {ConsoleLogger, IConsoleLoggerSettings,getConsoleStream} from '../index';
 import { getLoggerOptions, makeLogger, CdmLogger } from '@cdm-logger/core';
 import Logger from 'pino';
-import 'jest'
 
 
 function testLogger(logger: any, msg: string) {
@@ -129,11 +129,10 @@ describe('Console Logger', () => {
 
   it('should be able to create an instance with 2 streams at different levels', () => {
     const logger: CdmLogger.ILogger = createMultiLogger('TestLog', {mode: 'long', level: 'warn'}, {mode: 'short', level: 'trace'});
-    expect(logger).not.toBeUndefined;
-    expect(logger).not.toBeNull;
+    expect(logger).not.toBeUndefined();
+    expect(logger).not.toBeNull();
     testLogger(logger, 'long/warn + short/trace')
   });
-})
 
 describe('Console Logger using Constructor', () => {
   class TestClass {
@@ -206,9 +205,11 @@ describe('Console Logger for child classes', () => {
     private logger: CdmLogger.ILogger;
 
     constructor(@inject('logger') logger1: CdmLogger.ILogger) {
-      this.logger = logger1.child({className: 'TestClass'})
+      this.logger = logger1.child({className: 'TestClass'});
+      logger1.info('-tests')
     }
     test() {
+      console.log('--TESTSELl')
       this.logger.info('This is to test child logger.')
     }
   }
@@ -223,4 +224,5 @@ describe('Console Logger for child classes', () => {
     testClass.test();
   });
 
-})
+});
+});
