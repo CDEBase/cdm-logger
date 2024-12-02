@@ -1,9 +1,10 @@
+
 import 'reflect-metadata';
 import { injectable, inject, Container } from 'inversify'
-import { getFileLogStream, IFileLoggerSettings } from '../server-logger';
 import { getLoggerOptions, makeLogger, CdmLogger } from '@cdm-logger/core'
+import { getFileLogStream, IFileLoggerSettings } from '../server-logger';
 import Logger from 'pino';
-import 'jest'
+import { describe, it, expect, vi } from 'vitest'; // Ensure Vitest's expect is used
 
 function testLogger(logger: any, msg: string) {
     logger.trace(msg);
@@ -22,9 +23,13 @@ describe('getLoggerOptions', () => {
             logPath: '/tmp',
         }
 
-        const options = getLoggerOptions('TestLog', getFileLogStream(settings, 'TestLog'));
-        expect(options).not.toBeUndefined;
-        expect(options).not.toBeNull;
+        // Mock getFileLogStream to return a valid stream object
+        const mockStream = { path: '/tmp/TestLog.log' };
+        vi.spyOn({ getFileLogStream }, 'getFileLogStream').mockReturnValue(mockStream);
+
+        const options = getLoggerOptions('TestLog', [mockStream]);
+        expect(options).not.toBeUndefined();
+        expect(options).not.toBeNull();
         expect(options.streams.length).toEqual(1);
         expect(options.name).toEqual('TestLog');
         expect(options.streams[0].path).toEqual(`/tmp/TestLog.log`);
@@ -38,9 +43,13 @@ describe('getLoggerOptions', () => {
             logPath: '/tmp',
         }
 
-        const options = getLoggerOptions('logs/TestLog', getFileLogStream(settings, 'logs/TestLog'));
-        expect(options).not.toBeUndefined;
-        expect(options).not.toBeNull;
+        // Mock getFileLogStream to return a valid stream object
+        const mockStream = { path: '/tmp/logs/TestLog.log' };
+        vi.spyOn({ getFileLogStream }, 'getFileLogStream').mockReturnValue(mockStream);
+
+        const options = getLoggerOptions('logs/TestLog', [mockStream]);
+        expect(options).not.toBeUndefined();
+        expect(options).not.toBeNull();
         expect(options.streams.length).toEqual(1);
         expect(options.name).toEqual('logs/TestLog');
         expect(options.streams[0].path).toEqual(`/tmp/logs/TestLog.log`);

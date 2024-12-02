@@ -81,6 +81,7 @@
     "jquery": "^3.2.1",
     "lerna": "^6.1.0",
     "reflect-metadata": "^0.1.10",
+    "vitest": "^2.1.7",
     "rimraf": "^3.0.0",
     "ts-jest": "^24.2.0",
     "ts-loader": "^6.2.1",

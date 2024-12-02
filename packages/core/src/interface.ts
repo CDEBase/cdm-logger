@@ -1,5 +1,5 @@
 import { EventEmitter } from "events";
-import type { LevelWithSilentOrString } from 'pino';
+import type { LevelWithSilentOrString, LoggerExtras } from 'pino';
 
 export type LogLevelString =
   | "trace"
@@ -11,6 +11,11 @@ export type LogLevelString =
 export type LoggerLevel = LogLevelString | number;
 export type LevelWithSilent = LoggerLevel | "silent";
 
+export type ChildLoggerOptions = {
+  [key: string]: string;
+  childName?: string;
+
+}
 export interface BaseLogger extends EventEmitter {
   /**
    * Holds the current log format version (as output in the v property of each log record).
@@ -68,7 +73,7 @@ export interface BaseLogger extends EventEmitter {
    * @param bindings: an object of key-value pairs to include in log lines as properties.
    * @returns a child logger instance.
    */
-  child(options: Object, simple?: boolean): ILogger;
+  child(options: ChildLoggerOptions, simple?: boolean): ILogger;
 
   /**
    * Log at `'fatal'` level the given msg. If the first argument is an object, all its properties will be included in the JSON line.
