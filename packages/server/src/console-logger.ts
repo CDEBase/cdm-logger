@@ -14,6 +14,7 @@ export function getConsoleStream(settings?: IConsoleLoggerSettings) {
   if (settings.mode === 'raw') {
     return {
       level: getSettingsLevel(settings),
+      stream: process.stdout,
     }
   }
 
@@ -24,7 +25,8 @@ export function getConsoleStream(settings?: IConsoleLoggerSettings) {
       options: {
         colorize: true
       }
-    }
+    },
+    stream: process.stdout,
   }
 }
 

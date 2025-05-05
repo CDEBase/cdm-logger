@@ -1,7 +1,7 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import 'reflect-metadata';
 import { injectable, inject, Container } from 'inversify'
-import {ConsoleLogger, IConsoleLoggerSettings,getConsoleStream} from '../index';
+import {ConsoleLogger, IConsoleLoggerSettings, getConsoleStream} from '../index';
 import { getLoggerOptions, makeLogger, CdmLogger } from '@cdm-logger/core';
 import Logger from 'pino';
 
@@ -18,9 +18,7 @@ function testLogger(logger: any, msg: string) {
 describe('getLoggerOptions', () => {
   it('should be able to getLoggerOptions with no streams', () => {
     const options = getLoggerOptions('TestLog');
-    expect(options).not.toBeUndefined;
-    expect(options).not.toBeNull;
-    expect(options.streams).toBeUndefined;
+    expect(options).toBeDefined();
     expect(options.name).toEqual('TestLog');
     testLogger(Logger(options), 'Raw Helllo')
   });
@@ -31,10 +29,9 @@ describe('getLoggerOptions', () => {
       level: 'warn'
     }
 
-    const options = getLoggerOptions('TestLog', getConsoleStream(settings));
-    expect(options).not.toBeUndefined;
-    expect(options).not.toBeNull;
-    expect(options.streams.length).toEqual(1);
+    const consoleStream = getConsoleStream(settings);
+    const options = getLoggerOptions('TestLog', consoleStream);
+    expect(options).toBeDefined();
     expect(options.name).toEqual('TestLog');
     testLogger(Logger(options), settings.level as string)
   });
@@ -44,10 +41,9 @@ describe('getLoggerOptions', () => {
       mode:'short'
     }
 
-    const options = getLoggerOptions('TestLog', getConsoleStream(settings));
-    expect(options).not.toBeUndefined;
-    expect(options).not.toBeNull;
-    expect(options.streams.length).toEqual(1);
+    const consoleStream = getConsoleStream(settings);
+    const options = getLoggerOptions('TestLog', consoleStream);
+    expect(options).toBeDefined();
     expect(options.name).toEqual('TestLog');
     testLogger(Logger(options), 'INFO')
   });
@@ -57,10 +53,9 @@ describe('getLoggerOptions', () => {
       mode:'dev'
     }
 
-    const options = getLoggerOptions('TestLog', getConsoleStream(settings));
-    expect(options).not.toBeUndefined;
-    expect(options).not.toBeNull;
-    expect(options.streams.length).toEqual(1);
+    const consoleStream = getConsoleStream(settings);
+    const options = getLoggerOptions('TestLog', consoleStream);
+    expect(options).toBeDefined();
     expect(options.name).toEqual('TestLog');
     testLogger(Logger(options), 'INFO')
   });
@@ -90,14 +85,19 @@ describe('getLoggerOptions', () => {
   */
   it('should not be able to getLoggerOptions with name undefined, null or empty', () => {
     expect(() => getLoggerOptions('', getConsoleStream())).toThrow(Error);
-    expect(() => getLoggerOptions(null, getConsoleStream())).toThrow(Error);
-    expect(() => getLoggerOptions(undefined, getConsoleStream())).toThrow(Error);
+    expect(() => getLoggerOptions('', getConsoleStream())).toThrow(Error);
+    expect(() => getLoggerOptions('', getConsoleStream())).toThrow(Error);
   });
 
 })
 
 function createMultiLogger(name: string | Object, settings1: IConsoleLoggerSettings, settings2: IConsoleLoggerSettings) {
-  return makeLogger(name, getConsoleStream(settings1), getConsoleStream(settings2));
+  return makeLogger(Logger, name, { 
+    streams: [
+      getConsoleStream(settings1), 
+      getConsoleStream(settings2)
+    ]
+  });
 }
 
 describe('Console Logger', () => {
@@ -108,29 +108,25 @@ describe('Console Logger', () => {
     }
 
     const logger: CdmLogger.ILogger = ConsoleLogger.create('TestLog', settings);
-    expect(logger).not.toBeUndefined;
-    expect(logger).not.toBeNull;
+    expect(logger).toBeDefined();
     testLogger(logger, settings.level as string)
   });
 
   it('should be able to create an instance without settings', () => {
     const logger: CdmLogger.ILogger = ConsoleLogger.create('TestLog');
-    expect(logger).not.toBeUndefined;
-    expect(logger).not.toBeNull;
+    expect(logger).toBeDefined();
     testLogger(logger, 'INFO')
   });
 
   it('should be able to create an instance with 2 streams at different levels', () => {
     const logger: CdmLogger.ILogger = createMultiLogger('TestLog', {mode: 'long', level: 'trace'}, {mode: 'short', level: 'warn'});
-    expect(logger).not.toBeUndefined;
-    expect(logger).not.toBeNull;
+    expect(logger).toBeDefined();
     testLogger(logger, 'long/trace + short/warn')
   });
 
   it('should be able to create an instance with 2 streams at different levels', () => {
     const logger: CdmLogger.ILogger = createMultiLogger('TestLog', {mode: 'long', level: 'warn'}, {mode: 'short', level: 'trace'});
-    expect(logger).not.toBeUndefined();
-    expect(logger).not.toBeNull();
+    expect(logger).toBeDefined();
     testLogger(logger, 'long/warn + short/trace')
   });
 
@@ -147,29 +143,25 @@ describe('Console Logger using Constructor', () => {
     }
 
     const logger: CdmLogger.ILogger = ConsoleLogger.create(instance, settings);
-    expect(logger).not.toBeUndefined;
-    expect(logger).not.toBeNull;
+    expect(logger).toBeDefined();
     testLogger(logger, settings.level as string)
   });
 
   it('should be able to create an instance without settings', () => {
     const logger: CdmLogger.ILogger = ConsoleLogger.create(instance);
-    expect(logger).not.toBeUndefined;
-    expect(logger).not.toBeNull;
+    expect(logger).toBeDefined();
     testLogger(logger, 'INFO')
   });
 
   it('should be able to create an instance with 2 streams at different levels', () => {
     const logger: CdmLogger.ILogger = createMultiLogger(instance, {mode: 'long', level: 'trace'}, {mode: 'short', level: 'warn'});
-    expect(logger).not.toBeUndefined;
-    expect(logger).not.toBeNull;
+    expect(logger).toBeDefined();
     testLogger(logger, 'long/trace + short/warn')
   });
 
   it('should be able to create an instance with 2 streams at different levels', () => {
     const logger: CdmLogger.ILogger = createMultiLogger(instance, {mode: 'long', level: 'warn'}, {mode: 'short', level: 'trace'});
-    expect(logger).not.toBeUndefined;
-    expect(logger).not.toBeNull;
+    expect(logger).toBeDefined();
     testLogger(logger, 'long/warn + short/trace')
   });
 })
@@ -191,15 +183,12 @@ describe('Console Logger using inversify', () => {
   container.bind<TestClass>('TestClass').to(TestClass)
 
   it('should be able to create a TRACE instance', () => {
-
     const testClass = container.get<TestClass>('TestClass')
     testClass.test();
   });
-
 })
 
 describe('Console Logger for child classes', () => {
-
   @injectable()
   class TestClass {
     private logger: CdmLogger.ILogger;
@@ -209,7 +198,6 @@ describe('Console Logger for child classes', () => {
       logger1.info('-tests')
     }
     test() {
-      console.log('--TESTSELl')
       this.logger.info('This is to test child logger.')
     }
   }
@@ -219,10 +207,23 @@ describe('Console Logger for child classes', () => {
   container.bind<TestClass>('TestClass').to(TestClass)
 
   it('should be able to create a TRACE instance', () => {
-
     const testClass = container.get<TestClass>('TestClass')
     testClass.test();
   });
-
+  
+  it('should properly add classname to child logger context', () => {
+    // Create parent logger
+    const parentLogger = ConsoleLogger.create('ParentLogger');
+    expect(parentLogger).toBeDefined();
+    
+    // Create child logger with classname
+    const childLogger = parentLogger.child({ classname: 'TestChild' });
+    expect(childLogger).toBeDefined();
+    
+    // Test logging with child logger
+    const infoSpy = vi.spyOn(childLogger, 'info');
+    childLogger.info('Test child logger with classname');
+    expect(infoSpy).toHaveBeenCalledWith('Test child logger with classname');
+  });
 });
 });

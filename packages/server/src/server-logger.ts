@@ -15,9 +15,11 @@ export function getFileLogStream(settings: IFileLoggerSettings, name: string) {
     mkdirp.sync(logDir);
     const logFile = path.join(logDir, `${pathParse.name}.log`);
     return {
+        type: 'file',
         level: getSettingsLevel(settings),
-        dest: logFile,
-        minLength: 4096, // Buffer before writing
+        path: logFile,    // pino expects path property for file streams
+        dest: logFile,    // keeping dest for backward compatibility
+        minLength: 4096,  // Buffer before writing
         sync: false,
     }
 }
