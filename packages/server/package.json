@@ -49,8 +49,8 @@
   "dependencies": {
     "@cdm-logger/core": "link:../core",
     "bunyan": "^1.8.15",
-    "pino": "^9.1.0",
-    "pino-pretty": "^9.1.0"
+    "pino": "~9.6.0",
+    "pino-pretty": "^13.0.0"
   },
   "homepage": "https://github.com/cdmbase/cdm-logger",
   "repository": {

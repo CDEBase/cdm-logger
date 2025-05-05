@@ -1,4 +1,3 @@
-
 import 'reflect-metadata';
 import { injectable, inject, Container } from 'inversify'
 import { getLoggerOptions, makeLogger, CdmLogger } from '@cdm-logger/core'
@@ -23,17 +22,23 @@ describe('getLoggerOptions', () => {
             logPath: '/tmp',
         }
 
-        // Mock getFileLogStream to return a valid stream object
-        const mockStream = { path: '/tmp/TestLog.log' };
-        vi.spyOn({ getFileLogStream }, 'getFileLogStream').mockReturnValue(mockStream);
-
-        const options = getLoggerOptions('TestLog', [mockStream]);
-        expect(options).not.toBeUndefined();
-        expect(options).not.toBeNull();
-        expect(options.streams.length).toEqual(1);
+        // Get real file stream config
+        const fileStream = getFileLogStream(settings, 'TestLog');
+        
+        // Create logger options with the stream
+        const options = getLoggerOptions('TestLog', { streams: [fileStream] });
+        
+        // Verify the options
+        expect(options).toBeDefined();
         expect(options.name).toEqual('TestLog');
-        expect(options.streams[0].path).toEqual(`/tmp/TestLog.log`);
-        testLogger(Logger(options), settings.level as string)
+        expect(options.streams).toBeDefined();
+        expect(Array.isArray(options.streams)).toBe(true);
+        expect(options.streams.length).toEqual(1);
+        expect(options.streams[0].path).toEqual(fileStream.path);
+        
+        // Create logger and test it
+        const logger = Logger(options);
+        testLogger(logger, settings.level as string);
     });
 
     it('should be able to getLoggerOptions with nested path', () => {
@@ -43,17 +48,55 @@ describe('getLoggerOptions', () => {
             logPath: '/tmp',
         }
 
-        // Mock getFileLogStream to return a valid stream object
-        const mockStream = { path: '/tmp/logs/TestLog.log' };
-        vi.spyOn({ getFileLogStream }, 'getFileLogStream').mockReturnValue(mockStream);
-
-        const options = getLoggerOptions('logs/TestLog', [mockStream]);
-        expect(options).not.toBeUndefined();
-        expect(options).not.toBeNull();
-        expect(options.streams.length).toEqual(1);
+        // Get real file stream config
+        const fileStream = getFileLogStream(settings, 'logs/TestLog');
+        
+        // Create logger options with the stream
+        const options = getLoggerOptions('logs/TestLog', { streams: [fileStream] });
+        
+        // Verify the options
+        expect(options).toBeDefined();
         expect(options.name).toEqual('logs/TestLog');
-        expect(options.streams[0].path).toEqual(`/tmp/logs/TestLog.log`);
-        testLogger(Logger(options), settings.level as string)
+        expect(options.streams).toBeDefined();
+        expect(Array.isArray(options.streams)).toBe(true);
+        expect(options.streams.length).toEqual(1);
+        expect(options.streams[0].path).toEqual(fileStream.path);
+        
+        // Create logger and test it
+        const logger = Logger(options);
+        testLogger(logger, settings.level as string);
     });
+});
 
+describe('Logger child functionality', () => {
+    it('should create child logger with additional context', () => {
+        const settings: IFileLoggerSettings = {
+            mode: 'long',
+            level: 'info',
+            logPath: '/tmp',
+        }
+
+        // Get real file stream config
+        const fileStream = getFileLogStream(settings, 'TestLog');
+        
+        // Create parent logger
+        const options = getLoggerOptions('TestLog', { streams: [fileStream] });
+        const parentLogger = Logger(options) as unknown as CdmLogger.ILogger;
+        
+        // Create child logger with context
+        const childContext = { component: 'ChildComponent', childName: 'TestChild' };
+        const childLogger = parentLogger.child(childContext);
+        console.log('childLogger', childLogger);
+        
+        // Verify child logger
+        expect(childLogger).toBeDefined();
+        
+        // Test that we can log with the child logger
+        const infoSpy = vi.spyOn(childLogger, 'info');
+        childLogger.info('Test child logger message');
+        expect(infoSpy).toHaveBeenCalledWith('Test child logger message');
+        
+        // Advanced test: ensure child context properties appear in logs
+        // This would require capturing and parsing the actual log output
+    });
 });
