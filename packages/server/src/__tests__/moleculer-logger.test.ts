@@ -159,4 +159,32 @@ describe('CdmMoleculerLogger', () => {
     // Verify we got a logger back
     expect(childLogger).toBeDefined();
   });
+
+  it('should delegate logger methods to cdmLogger', () => {
+    const logger = new CdmMoleculerLogger({});
+    
+    // Create spies on the internal cdmLogger methods
+    const traceSpy = vi.spyOn(logger.cdmLogger, 'trace');
+    const debugSpy = vi.spyOn(logger.cdmLogger, 'debug');
+    const infoSpy = vi.spyOn(logger.cdmLogger, 'info');
+    const warnSpy = vi.spyOn(logger.cdmLogger, 'warn');
+    const errorSpy = vi.spyOn(logger.cdmLogger, 'error');
+    const fatalSpy = vi.spyOn(logger.cdmLogger, 'fatal');
+    
+    // Call the methods on the logger
+    logger.trace('trace message', { data: 1 });
+    logger.debug('debug message', { data: 2 });
+    logger.info('info message', { data: 3 });
+    logger.warn('warn message', { data: 4 });
+    logger.error('error message', { data: 5 });
+    logger.fatal('fatal message', { data: 6 });
+    
+    // Verify the methods were delegated to cdmLogger
+    expect(traceSpy).toHaveBeenCalledWith('trace message', { data: 1 });
+    expect(debugSpy).toHaveBeenCalledWith('debug message', { data: 2 });
+    expect(infoSpy).toHaveBeenCalledWith('info message', { data: 3 });
+    expect(warnSpy).toHaveBeenCalledWith('warn message', { data: 4 });
+    expect(errorSpy).toHaveBeenCalledWith('error message', { data: 5 });
+    expect(fatalSpy).toHaveBeenCalledWith('fatal message', { data: 6 });
+  });
 }); 
