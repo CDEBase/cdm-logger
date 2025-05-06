@@ -143,4 +143,20 @@ describe('CdmMoleculerLogger', () => {
     expect(typeof cdmLogger.trace).toBe('function');
     expect(typeof cdmLogger.fatal).toBe('function');
   });
+
+  it('should create a child logger when child method is called', () => {
+    const logger = new CdmMoleculerLogger({});
+    
+    // Create a spy to verify the child method is called
+    const childSpy = vi.spyOn(logger.cdmLogger, 'child');
+    
+    // Call the child method
+    const childLogger = logger.child({ service: 'test-service' });
+    
+    // Verify the child method was called with the right bindings
+    expect(childSpy).toHaveBeenCalledWith({ service: 'test-service' });
+    
+    // Verify we got a logger back
+    expect(childLogger).toBeDefined();
+  });
 }); 

@@ -13,11 +13,19 @@ import { ConsoleLogger } from '../console-logger';
  */
 class CdmMoleculerLogger extends BaseLogger {
 	/**
+	 * Class properties
+	 */
+	opts: Record<string, any>;
+	logLevels: Record<string, string>;
+	cdmLogger: any;
+	childLoggers: Map<string, any>;
+
+	/**
 	 * Creates an instance of CdmMoleculerLogger.
 	 * @param {Object} opts
 	 * @memberof CdmMoleculerLogger
 	 */
-	constructor(opts) {
+	constructor(opts: Record<string, any>) {
 		super(opts);
 
 		this.opts = opts || {};
@@ -40,7 +48,7 @@ class CdmMoleculerLogger extends BaseLogger {
 	 * Initialize logger.
 	 * @param {Object} loggerFactory
 	 */
-	init(loggerFactory) {
+	init(loggerFactory: any) {
 		super.init(loggerFactory);
 		
 		// Cache child loggers by module
@@ -52,7 +60,7 @@ class CdmMoleculerLogger extends BaseLogger {
 	 * @param {Object} bindings
 	 * @returns {Function}
 	 */
-	getLogHandler(bindings) {
+	getLogHandler(bindings: { nodeID: string; mod: string }) {
 		// Create or retrieve a child logger
 		const key = `${bindings.nodeID}-${bindings.mod}`;
 		let child = this.childLoggers.get(key);
@@ -65,7 +73,7 @@ class CdmMoleculerLogger extends BaseLogger {
 		}
 
 		// Return log handler
-		return (level, args) => {
+		return (level: string, args: any[]) => {
 			// Ensure args is not empty
 			if (!args || args.length === 0) {
 				args = [""];
@@ -88,10 +96,19 @@ class CdmMoleculerLogger extends BaseLogger {
 	}
 
 	/**
+	 * Create a child logger with additional binding context
+	 * @param {Object} bindings - Additional properties to include in log records
+	 * @returns {Object} Child logger instance
+	 */
+	child(bindings: Record<string, any>): any {
+		return this.cdmLogger.child(bindings);
+	}
+
+	/**
 	 * Get current CDM logger instance
 	 * @returns {Object}
 	 */
-	getCdmLogger() {
+	getCdmLogger(): any {
 		return this.cdmLogger;
 	}
 }
