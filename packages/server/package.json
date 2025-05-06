@@ -5,11 +5,26 @@
   "main": "./lib/index.js",
   "type": "module",
   "typings": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "default": "./lib/index.js"
+    },
+    "./moleculer": {
+      "types": "./lib/moleculer.d.ts",
+      "import": "./lib/moleculer/index.js",
+      "require": "./lib/moleculer/index.cjs",
+      "default": "./lib/moleculer/index.js"
+    },
+    "./package.json": "./package.json"
+  },
   "scripts": {
     "prepublish": "yarn build",
-    "build": "yarn build:clean && yarn build:lib",
+    "build": "yarn build:clean && yarn build:lib && yarn build:types",
     "build:clean": "rimraf lib",
     "build:lib": "rollup -c rollup.config.mjs",
+    "build:types": "tsc --emitDeclarationOnly",
     "jest": "../../node_modules/.bin/jest",
     "test": "vitest",
     "test:debug": "npm test -- --runInBand",
@@ -21,7 +36,8 @@
   "keywords": [
     "typescript",
     "pino",
-    "logger"
+    "logger",
+    "esm"
   ],
   "author": "CDMBase LLC",
   "license": "MIT",
@@ -37,13 +53,15 @@
       "js"
     ],
     "testRegex": "/__tests__/.*test*\\.(ts|tsx|js)$",
-    "testPathIgnorePatterns": ["/node_modules/"],
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
     "transform": {
       "node_modules/(@cdm-logger/core)/.+\\.(j|t)sx?$": "ts-jest",
       "^.+\\.js$": "babel-jest"
     },
     "transformIgnorePatterns": [
-      "node_modules/(?!@cdm-logger\/core)/"
+      "node_modules/(?!@cdm-logger/core)/"
     ]
   },
   "dependencies": {
@@ -60,5 +78,11 @@
   "bugs": {
     "url": "https://github.com/cdmbase/cdm-logger/issues"
   },
-  "gitHead": "0394aed3d9235b51469fff3ae9c1b769ea0a11e3"
+  "gitHead": "0394aed3d9235b51469fff3ae9c1b769ea0a11e3",
+  "peerDependencies": {
+    "moleculer": ">=0.14.0"
+  },
+  "devDependencies": {
+    "moleculer": "^0.14.35"
+  }
 }

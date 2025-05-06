@@ -1,17 +1,16 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "rootDir": "./src",
-    "outDir": "./lib",
-    "declarationDir": "lib",
-    "skipLibCheck": true
+    "outDir": "lib",
+    "rootDir": "src",
+    "baseUrl": ".",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "paths": {
+      "@cdm-logger/server": ["./src/index"],
+      "@cdm-logger/server/moleculer": ["./src/adapters/cdm-moleculer-adapter"]
+    }
   },
-  "include": ["src"],
-  "exclude": [
-    "**/**/*.test.ts",
-    "node_modules",
-    "lib",
-    "dist",
-    "webpack.config.js"
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "lib", "src/**/*.spec.ts", "src/**/*.test.ts"]
 }
