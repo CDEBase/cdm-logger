@@ -5,6 +5,42 @@
 const BaseLogger = require("moleculer").Loggers.Base;
 import { ConsoleLogger } from '../console-logger';
 
+// Patch to ensure all loggers have a child method
+// This is used to ensure compatibility with code expecting loggers to have a child method
+const originalCreateService = require("moleculer").ServiceBroker.prototype.createService;
+if (originalCreateService) {
+	require("moleculer").ServiceBroker.prototype.createService = function(schema, schemaMods) {
+		const service = originalCreateService.call(this, schema, schemaMods);
+		
+		// Make sure the service's logger has a child method
+		if (service && service.logger && !service.logger.child && this.logger) {
+			service.logger.child = (bindings) => {
+				// Try to get the child method from the broker's logger
+				if (this.logger.child) {
+					return this.logger.child(bindings);
+				}
+				
+				// Fallback if broker logger doesn't have child
+				// Just return the original logger with a log prefix
+				const prefix = Object.entries(bindings || {})
+					.map(([key, value]) => `${key}=${value}`)
+					.join(' ');
+				
+				return {
+					trace: (...args) => service.logger.trace(`[${prefix}]`, ...args),
+					debug: (...args) => service.logger.debug(`[${prefix}]`, ...args),
+					info: (...args) => service.logger.info(`[${prefix}]`, ...args),
+					warn: (...args) => service.logger.warn(`[${prefix}]`, ...args),
+					error: (...args) => service.logger.error(`[${prefix}]`, ...args),
+					fatal: (...args) => service.logger.fatal(`[${prefix}]`, ...args)
+				};
+			};
+		}
+		
+		return service;
+	};
+}
+
 /**
  * CDM Logger for Moleculer
  * 
