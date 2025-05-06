@@ -225,5 +225,29 @@ describe('Console Logger for child classes', () => {
     childLogger.info('Test child logger with classname');
     expect(infoSpy).toHaveBeenCalledWith('Test child logger with classname');
   });
+  
+  it('should be able to create a grandchild logger from a child logger', () => {
+    // Create parent logger
+    const parentLogger = ConsoleLogger.create('ParentLogger');
+    expect(parentLogger).toBeDefined();
+    
+    // Create first child logger
+    const childLogger = parentLogger.child({ component: 'ChildComponent' });
+    expect(childLogger).toBeDefined();
+    
+    // Create grandchild logger from the child logger
+    const grandchildLogger = childLogger.child({ method: 'GrandchildMethod' });
+    expect(grandchildLogger).toBeDefined();
+    
+    // Verify we can log with the grandchild logger
+    const infoSpy = vi.spyOn(grandchildLogger, 'info');
+    grandchildLogger.info('Test grandchild logger message');
+    expect(infoSpy).toHaveBeenCalledWith('Test grandchild logger message');
+    
+    // Log with all loggers to verify inheritance chain
+    parentLogger.info('Parent logger message');
+    childLogger.info('Child logger message');
+    grandchildLogger.info('Grandchild logger message');
+  });
 });
 });
