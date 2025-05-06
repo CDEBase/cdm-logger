@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import CdmMoleculerLogger from '../adapters/cdm-moleculer-logger';
+import CdmMoleculerLogger from '../adapters/moleculer-logger';
 
 // Mock Moleculer's BaseLogger
 vi.mock('moleculer', () => ({
