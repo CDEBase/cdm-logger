@@ -34,10 +34,8 @@
     "access": "public"
   },
   "keywords": [
-    "typescript",
     "pino",
-    "logger",
-    "esm"
+    "logger"
   ],
   "author": "CDMBase LLC",
   "license": "MIT",
