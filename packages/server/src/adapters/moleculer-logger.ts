@@ -53,6 +53,25 @@ class CdmMoleculerLogger extends BaseLogger {
 		
 		// Cache child loggers by module
 		this.childLoggers = new Map();
+
+		// Patch the LoggerFactory to add child method to the wrapped logger object
+		if (loggerFactory && loggerFactory.getLogger) {
+			const originalGetLogger = loggerFactory.getLogger;
+			loggerFactory.getLogger = (bindings: any) => {
+				const logger = originalGetLogger.call(loggerFactory, bindings);
+				
+				// Add the child method to the wrapped logger
+				if (logger && !logger.child) {
+					logger.child = (childBindings: any) => {
+						// Get the original CdmMoleculerLogger instance
+						const originalLogger = loggerFactory.appenders[0];
+						return originalLogger.child(childBindings);
+					};
+				}
+				
+				return logger;
+			};
+		}
 	}
 
 	/**
@@ -110,6 +129,33 @@ class CdmMoleculerLogger extends BaseLogger {
 	 */
 	getCdmLogger(): any {
 		return this.cdmLogger;
+	}
+
+	/**
+	 * Forward logger methods to cdmLogger
+	 */
+	trace(...args: any[]): void {
+		this.cdmLogger.trace(...args);
+	}
+
+	debug(...args: any[]): void {
+		this.cdmLogger.debug(...args);
+	}
+
+	info(...args: any[]): void {
+		this.cdmLogger.info(...args);
+	}
+
+	warn(...args: any[]): void {
+		this.cdmLogger.warn(...args);
+	}
+
+	error(...args: any[]): void {
+		this.cdmLogger.error(...args);
+	}
+
+	fatal(...args: any[]): void {
+		this.cdmLogger.fatal(...args);
 	}
 }
 
