@@ -34,30 +34,6 @@ const indexConfig = {
   ],
 };
 
-// Configuration for Moleculer adapter
-const moleculerConfig = {
-  ...baseConfig,
-  input: 'src/moleculer.ts',
-  output: [
-    {
-      file: 'lib/moleculer/index.js',
-      format: 'es',
-      name: 'CdmMoleculerAdapter',
-      compact: true,
-      exports: 'named',
-      sourcemap: true,
-    },
-    {
-      file: 'lib/moleculer/index.cjs',
-      format: 'cjs',
-      name: 'CdmMoleculerAdapter',
-      compact: true,
-      exports: 'named',
-      sourcemap: true,
-      esModule: true,
-    },
-  ],
-};
 
 // Export an array of configurations to build both versions
-export default [indexConfig, moleculerConfig];
+export default [indexConfig];
