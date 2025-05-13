@@ -70,11 +70,5 @@
   "bugs": {
     "url": "https://github.com/cdmbase/cdm-logger/issues"
   },
-  "gitHead": "0394aed3d9235b51469fff3ae9c1b769ea0a11e3",
-  "peerDependencies": {
-    "moleculer": ">=0.14.0"
-  },
-  "devDependencies": {
-    "moleculer": "^0.14.35"
-  }
+  "gitHead": "0394aed3d9235b51469fff3ae9c1b769ea0a11e3"
 }
