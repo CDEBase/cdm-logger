@@ -1,10 +1,10 @@
 import { ClientLogger } from './client-logger';
 import { LoggerLevel } from './interfaces';
-import { getEnvironment } from './utils/getEnvironment';
+import { getEnvironment } from '@cdm-logger/core';
 
-const APP_ENV = getEnvironment(); 
-const appName = APP_ENV.APP_NAME || 'FullStack';
-const logLevel: LoggerLevel = APP_ENV.LOG_LEVEL as LoggerLevel || 'info';
+const env = getEnvironment(); 
+const appName = env?.APP_NAME || 'FullStack';
+const logLevel: LoggerLevel = (env?.LOG_LEVEL as LoggerLevel) || 'info';
 const logger = ClientLogger.create(appName, { level: logLevel });
 
 export { logger };
