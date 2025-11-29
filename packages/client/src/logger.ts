@@ -7,4 +7,4 @@ const appName = env?.APP_NAME || 'FullStack';
 const logLevel: LoggerLevel = (env?.LOG_LEVEL as LoggerLevel) || 'info';
 const logger = ClientLogger.create(appName, { level: logLevel });
 
-export { logger };
+export { logger, getEnvironment };
