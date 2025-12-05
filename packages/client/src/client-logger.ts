@@ -1,4 +1,4 @@
-import pino from 'pino/browser';
+import pino from 'pino/browser.js';
 import { CdmLogger } from '@cdm-logger/core';
 import { ILoggerSettings } from './interfaces';
 
