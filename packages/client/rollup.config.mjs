@@ -1,17 +1,6 @@
 import typescript from '@rollup/plugin-typescript';
 
-// Define a base configuration for reuse
-const baseConfig = {
-  plugins: [
-    typescript({ noEmitOnError: true }),
-  ],
-  // marking all node modules as external
-  external: (id) => !/^[./]/.test(id),
-};
-
-// Configuration for index.ts
-const indexConfig = {
-  ...baseConfig,
+export default {
   input: 'src/index.ts',
   output: [
     {
@@ -25,8 +14,9 @@ const indexConfig = {
       chunkFileNames: 'index-[hash].[format].js',
     },
   ],
+  plugins: [
+    typescript({ noEmitOnError: true }),
+  ],
+  // marking all node modules as external
+  external: (id) => !/^[./]/.test(id),
 };
-
-
-// Export an array of configurations to build both versions
-export default [indexConfig];

@@ -3,8 +3,16 @@
   "version": "9.0.18",
   "description": "Universal - Logger",
   "main": "./lib/index.js",
+  "module": "./lib/index.js",
   "type": "module",
   "typings": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./lib/index.js",
+      "require": "./lib/index.js",
+      "types": "./lib/index.d.ts"
+    }
+  },
   "scripts": {
     "prepublish": "yarn build",
     "build": "yarn build:clean && yarn build:lib",
@@ -43,8 +51,7 @@
   },
   "dependencies": {
     "@cdm-logger/core": "link:../core",
-    "pino": "^9.1.0",
-    "pino-pretty": "^9.1.0"
+    "pino": "^9.1.0"
   },
   "homepage": "https://github.com/cdmbase/cdm-logger",
   "repository": {
