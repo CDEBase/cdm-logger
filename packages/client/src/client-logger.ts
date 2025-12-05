@@ -1,28 +1,19 @@
-import Logger from 'pino';
+import pino from 'pino/browser';
 import { CdmLogger } from '@cdm-logger/core';
 import { ILoggerSettings } from './interfaces';
-
-// import { ConsoleStream } from './console-stream';
 
 export function getSettingsLevel(settings: ILoggerSettings) {
     return settings.level || 'info';
 }
+
 export function getConsoleStream(settings?: ILoggerSettings): any {
     if (!settings) {
         settings = {};
     }
 
-    // const rawStream = new ConsoleStream();
-
     return {
         level: getSettingsLevel(settings),
-        transport: {
-            target: 'pino-pretty',
-            options: {
-              colorize: true
-            }
-        }
-    }
+    };
 }
 
 export class ClientLogger {
@@ -33,22 +24,21 @@ export class ClientLogger {
 
 export function getLoggerOptions(name: string, others: any = {}) {
     if (!name) {
-        throw Error('Cannot create LoggerOptions without a log name')
+        throw Error('Cannot create LoggerOptions without a log name');
     }
     const options: any = {
         name: name,
-        transport: {
-            target: 'pino-pretty',
-            options: {
-              colorize: true
-            }
+        browser: {
+            asObject: true,
         },
-        ...others
-    }
-    return options;;
+        ...others,
+    };
+    return options;
 }
 
 export function makeLogger(name: string | Object, options: any = {}) {
-    const logName = typeof name === 'object' ? name.constructor.toString().match(/class ([\w|_]+)/)[1] : name
-    return Logger(getLoggerOptions(logName, options)) as unknown as CdmLogger.ILogger;
+    const logName = typeof name === 'object' 
+        ? name.constructor.toString().match(/class ([\w|_]+)/)?.[1] || 'UnknownClass'
+        : name;
+    return pino(getLoggerOptions(logName, options)) as unknown as CdmLogger.ILogger;
 }
