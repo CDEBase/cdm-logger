@@ -1,6 +1,6 @@
 {
   "name": "@cdm-logger/client",
-  "version": "9.0.23",
+  "version": "9.0.24",
   "description": "Universal - Logger",
   "main": "./lib/index.js",
   "module": "./lib/index.js",
@@ -50,7 +50,7 @@
     "testRegex": "/__tests__/.*test*\\.(ts|tsx|js)$"
   },
   "dependencies": {
-    "@cdm-logger/core": "^9.0.23",
+    "@cdm-logger/core": "^9.0.24",
     "pino": "^9.1.0"
   },
   "homepage": "https://github.com/cdmbase/cdm-logger",

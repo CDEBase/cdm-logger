@@ -1,6 +1,6 @@
 {
   "name": "@cdm-logger/server",
-  "version": "9.0.23",
+  "version": "9.0.24",
   "description": "Universal - Logger",
   "main": "./lib/index.js",
   "type": "module",
@@ -57,7 +57,7 @@
     ]
   },
   "dependencies": {
-    "@cdm-logger/core": "^9.0.23",
+    "@cdm-logger/core": "^9.0.24",
     "bunyan": "^1.8.15",
     "pino": "~9.6.0",
     "pino-pretty": "^13.0.0"

@@ -1,6 +1,6 @@
 {
   "name": "@cdm-logger/electron",
-  "version": "9.0.23",
+  "version": "9.0.24",
   "description": "Universal - Logger",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
@@ -25,8 +25,8 @@
   "author": "CDMBase LLC",
   "license": "MIT",
   "dependencies": {
-    "@cdm-logger/core": "^9.0.23",
-    "@cdm-logger/server": "^9.0.23"
+    "@cdm-logger/core": "^9.0.24",
+    "@cdm-logger/server": "^9.0.24"
   },
   "devDependencies": {
     "@types/electron": "^1.6.10",
