@@ -57,7 +57,7 @@
     ]
   },
   "dependencies": {
-    "@cdm-logger/core": "link:../core",
+    "@cdm-logger/core": "^9.0.23",
     "bunyan": "^1.8.15",
     "pino": "~9.6.0",
     "pino-pretty": "^13.0.0"
@@ -70,5 +70,5 @@
   "bugs": {
     "url": "https://github.com/cdmbase/cdm-logger/issues"
   },
-  "gitHead": "0394aed3d9235b51469fff3ae9c1b769ea0a11e3"
+  "gitHead": "c9b8be9c684e232fb2bd85d8fefb0741b70be953"
 }

@@ -50,7 +50,7 @@
     "testRegex": "/__tests__/.*test*\\.(ts|tsx|js)$"
   },
   "dependencies": {
-    "@cdm-logger/core": "link:../core",
+    "@cdm-logger/core": "^9.0.23",
     "pino": "^9.1.0"
   },
   "homepage": "https://github.com/cdmbase/cdm-logger",
@@ -61,5 +61,5 @@
   "bugs": {
     "url": "https://github.com/cdmbase/cdm-logger/issues"
   },
-  "gitHead": "0394aed3d9235b51469fff3ae9c1b769ea0a11e3"
+  "gitHead": "c9b8be9c684e232fb2bd85d8fefb0741b70be953"
 }
