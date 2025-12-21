@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.0.22](https://github.com/cdmbase/cdm-logger/compare/v9.0.21...v9.0.22) (2025-12-21)
+
+**Note:** Version bump only for package @cdm-logger/server
+
+
+
+
+
 ## [9.0.20](https://github.com/cdmbase/cdm-logger/compare/v9.0.19...v9.0.20) (2025-12-05)
 
 **Note:** Version bump only for package @cdm-logger/server
